@@ -1,0 +1,30 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import WelcomeScreen from './pages/WelcomeScreen';
+import GameScreen from './pages/GameScreen';
+import ParentDashboard from './pages/ParentDashboard';
+import OnboardingScreen from './pages/OnboardingScreen';
+import './App.css';
+
+function App() {
+  return (
+    <Router>
+      <motion.div 
+        className="min-h-screen bg-gradient-to-br from-mint-50 to-blue-50 font-inter"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Routes>
+          <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/onboarding" element={<OnboardingScreen />} />
+          <Route path="/game" element={<GameScreen />} />
+          <Route path="/dashboard" element={<ParentDashboard />} />
+        </Routes>
+      </motion.div>
+    </Router>
+  );
+}
+
+export default App;
