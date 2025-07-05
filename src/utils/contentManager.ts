@@ -1,10 +1,8 @@
 interface PhonemeData {
   id: string;
   phoneme: string;
-  name: string;
-  words: string[];
-  images: string[];
-  audio: string;
+  grapheme: string;
+  words: { word: string; emoji: string; emojiName: string; audio: { us: string; uk: string; in: string } }[];
   difficulty: 'easy' | 'medium' | 'hard';
   prerequisites: string[];
 }
@@ -19,6 +17,8 @@ interface Level {
   unlockCriteria: string[];
 }
 
+import phonemes from '../assets/content/phonemes.json';
+
 class ContentManager {
   private phonemes: PhonemeData[] = [];
   private levels: Level[] = [];
@@ -28,86 +28,36 @@ class ContentManager {
   }
 
   private initializeContent() {
-    // Initialize phoneme data
-    this.phonemes = [
-      {
-        id: 'a',
-        phoneme: 'A',
-        name: 'Letter A',
-        words: ['Apple', 'Ant', 'Alligator', 'Airplane'],
-        images: ['🍎', '🐜', '🐊', '✈️'],
-        audio: '/sounds/phonemes/a.mp3',
-        difficulty: 'easy',
-        prerequisites: []
-      },
-      {
-        id: 'b',
-        phoneme: 'B',
-        name: 'Letter B',
-        words: ['Ball', 'Bear', 'Banana', 'Butterfly'],
-        images: ['⚽', '🐻', '🍌', '🦋'],
-        audio: '/sounds/phonemes/b.mp3',
-        difficulty: 'easy',
-        prerequisites: []
-      },
-      {
-        id: 'c',
-        phoneme: 'C',
-        name: 'Letter C',
-        words: ['Cat', 'Car', 'Cookie', 'Castle'],
-        images: ['🐱', '🚗', '🍪', '🏰'],
-        audio: '/sounds/phonemes/c.mp3',
-        difficulty: 'easy',
-        prerequisites: []
-      },
-      {
-        id: 'd',
-        phoneme: 'D',
-        name: 'Letter D',
-        words: ['Dog', 'Duck', 'Drum', 'Dragon'],
-        images: ['🐕', '🦆', '🥁', '🐉'],
-        audio: '/sounds/phonemes/d.mp3',
-        difficulty: 'easy',
-        prerequisites: ['a', 'b', 'c']
-      },
-      {
-        id: 'e',
-        phoneme: 'E',
-        name: 'Letter E',
-        words: ['Elephant', 'Egg', 'Eagle', 'Engine'],
-        images: ['🐘', '🥚', '🦅', '🚂'],
-        audio: '/sounds/phonemes/e.mp3',
-        difficulty: 'easy',
-        prerequisites: ['a', 'b', 'c', 'd']
-      },
-      // Add more phonemes as needed
-    ];
+    this.phonemes = phonemes.map(phoneme => ({
+      ...phoneme,
+      difficulty: phoneme.phoneme.length <= 3 ? 'easy' : phoneme.phoneme.length <= 5 ? 'medium' : 'hard',
+      prerequisites: []
+    }));
 
-    // Initialize levels
     this.levels = [
       {
         id: 'level-1',
         name: 'First Letters',
-        phonemes: ['a', 'b', 'c'],
-        objective: 'Learn the first three letters of the alphabet',
+        phonemes: ['1', '2', '3', '4', '5'], // Use phoneme IDs
+        objective: 'Learn basic consonant sounds',
         difficulty: 'easy',
         minAccuracy: 70,
         unlockCriteria: []
       },
       {
         id: 'level-2',
-        name: 'More Letters',
-        phonemes: ['d', 'e'],
-        objective: 'Learn letters D and E',
+        name: 'More Consonants',
+        phonemes: ['6', '7', '8', '9', '10'],
+        objective: 'Learn additional consonant sounds',
         difficulty: 'easy',
         minAccuracy: 75,
         unlockCriteria: ['level-1']
       },
       {
         id: 'level-3',
-        name: 'Letter Review',
-        phonemes: ['a', 'b', 'c', 'd', 'e'],
-        objective: 'Review all learned letters',
+        name: 'Vowel Introduction',
+        phonemes: ['11', '12', '13', '14', '15'],
+        objective: 'Learn basic vowel sounds',
         difficulty: 'medium',
         minAccuracy: 80,
         unlockCriteria: ['level-2']
@@ -128,12 +78,9 @@ class ContentManager {
   }
 
   getAvailableLevels(completedLevels: string[]): Level[] {
-    return this.levels.filter(level => {
-      // Check if all prerequisites are met
-      return level.unlockCriteria.every(criteria => 
-        completedLevels.includes(criteria)
-      );
-    });
+    return this.levels.filter(level =>
+      level.unlockCriteria.every(criteria => completedLevels.includes(criteria))
+    );
   }
 
   getNextLevel(currentLevelId: string): Level | undefined {
@@ -151,47 +98,37 @@ class ContentManager {
   ): PhonemeData[] {
     let candidates = this.getPhonemesByDifficulty(difficulty);
     
-    // Filter out mastered phonemes for advanced difficulty
     if (difficulty === 'hard') {
-      candidates = candidates.filter(p => !masteredPhonemes.includes(p.id));
+      candidates = candidates.filter(p => !masteredPhonemes.includes(p.phoneme));
     }
     
-    // Prioritize struggling phonemes
     if (strugglingPhonemes.length > 0) {
-      const strugglingContent = candidates.filter(p => 
-        strugglingPhonemes.includes(p.id)
-      );
+      const strugglingContent = candidates.filter(p => strugglingPhonemes.includes(p.phoneme));
       if (strugglingContent.length > 0) {
         return strugglingContent.slice(0, 3);
       }
     }
     
-    // Return a mix of new and review content
     const newContent = candidates.filter(p => 
-      !masteredPhonemes.includes(p.id) && 
-      !strugglingPhonemes.includes(p.id)
+      !masteredPhonemes.includes(p.phoneme) && !strugglingPhonemes.includes(p.phoneme)
     );
     
-    const reviewContent = candidates.filter(p => 
-      masteredPhonemes.includes(p.id)
-    );
+    const reviewContent = candidates.filter(p => masteredPhonemes.includes(p.phoneme));
     
-    const result = [
-      ...newContent.slice(0, 2),
-      ...reviewContent.slice(0, 1)
-    ];
-    
-    return result.slice(0, 3);
+    return [...newContent.slice(0, 2), ...reviewContent.slice(0, 1)].slice(0, 3);
   }
 
-  getRandomWord(phonemeId: string): { word: string; image: string } | undefined {
+  getRandomWord(phonemeId: string, accent: 'us' | 'uk' | 'in'): { word: string; emoji: string; audio: string } | undefined {
     const phoneme = this.getPhoneme(phonemeId);
-    if (!phoneme || phoneme.words.length === 0) return undefined;
-    
+    if (!phoneme || phoneme.words.length === 0) {
+      console.warn(`No phoneme or words found for ID: ${phonemeId}`);
+      return undefined;
+    }
     const randomIndex = Math.floor(Math.random() * phoneme.words.length);
     return {
-      word: phoneme.words[randomIndex],
-      image: phoneme.images[randomIndex] || '❓'
+      word: phoneme.words[randomIndex].word,
+      emoji: phoneme.words[randomIndex].emoji,
+      audio: phoneme.words[randomIndex].audio[accent]
     };
   }
 
@@ -199,9 +136,7 @@ class ContentManager {
     const phoneme = this.getPhoneme(phonemeId);
     if (!phoneme) return false;
     
-    return phoneme.prerequisites.every(req => 
-      completedPhonemes.includes(req)
-    );
+    return phoneme.prerequisites.every(req => completedPhonemes.includes(req));
   }
 
   getProgressPercentage(completedPhonemes: string[]): number {

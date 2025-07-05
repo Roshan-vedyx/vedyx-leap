@@ -2,6 +2,7 @@ class AudioManager {
   private audioContext: AudioContext | null = null;
   private soundCache: Map<string, AudioBuffer> = new Map();
   private isEnabled: boolean = true;
+  private currentAccent: 'us' | 'uk' | 'in' = 'us';
 
   constructor() {
     this.initializeAudioContext();
@@ -15,29 +16,48 @@ class AudioManager {
     }
   }
 
-  async loadSound(url: string): Promise<AudioBuffer | null> {
-    if (!this.audioContext) return null;
+  setAccent(accent: 'us' | 'uk' | 'in') {
+    this.currentAccent = accent;
+  }
 
-    // Check cache first
+  async loadSound(url: string): Promise<AudioBuffer | null> {
+    if (!this.audioContext) {
+      console.warn('AudioContext not initialized');
+      return null;
+    }
+
     if (this.soundCache.has(url)) {
       return this.soundCache.get(url)!;
     }
 
     try {
       const response = await fetch(url);
+      if (!response.ok) {
+        console.error(`Failed to fetch audio file: ${url}, status: ${response.status}`);
+        return null;
+      }
       const arrayBuffer = await response.arrayBuffer();
+      if (arrayBuffer.byteLength === 0) {
+        console.error(`Empty audio file: ${url}`);
+        return null;
+      }
       const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
-      
       this.soundCache.set(url, audioBuffer);
       return audioBuffer;
     } catch (error) {
-      console.warn(`Failed to load sound: ${url}`, error);
+      console.error(`Failed to load sound: ${url}`, error);
       return null;
     }
   }
 
-  async playSound(url: string, options: { volume?: number; loop?: boolean } = {}): Promise<void> {
+  async playSound(audioPaths: { us: string; uk: string; in: string } | string, options: { volume?: number; loop?: boolean } = {}): Promise<void> {
     if (!this.isEnabled || !this.audioContext) return;
+
+    const url = typeof audioPaths === 'string' ? audioPaths : audioPaths[this.currentAccent];
+    if (!url) {
+      console.error(`No audio URL for ${typeof audioPaths === 'string' ? 'sound' : 'accent ' + this.currentAccent}`);
+      return;
+    }
 
     const audioBuffer = await this.loadSound(url);
     if (!audioBuffer) return;
@@ -55,40 +75,8 @@ class AudioManager {
     source.start();
   }
 
-  async playPhonemeSound(phoneme: string): Promise<void> {
-    const phonemeUrls: Record<string, string> = {
-      'A': '/sounds/phonemes/a.mp3',
-      'B': '/sounds/phonemes/b.mp3',
-      'C': '/sounds/phonemes/c.mp3',
-      'D': '/sounds/phonemes/d.mp3',
-      'E': '/sounds/phonemes/e.mp3',
-      'F': '/sounds/phonemes/f.mp3',
-      'G': '/sounds/phonemes/g.mp3',
-      'H': '/sounds/phonemes/h.mp3',
-      'I': '/sounds/phonemes/i.mp3',
-      'J': '/sounds/phonemes/j.mp3',
-      'K': '/sounds/phonemes/k.mp3',
-      'L': '/sounds/phonemes/l.mp3',
-      'M': '/sounds/phonemes/m.mp3',
-      'N': '/sounds/phonemes/n.mp3',
-      'O': '/sounds/phonemes/o.mp3',
-      'P': '/sounds/phonemes/p.mp3',
-      'Q': '/sounds/phonemes/q.mp3',
-      'R': '/sounds/phonemes/r.mp3',
-      'S': '/sounds/phonemes/s.mp3',
-      'T': '/sounds/phonemes/t.mp3',
-      'U': '/sounds/phonemes/u.mp3',
-      'V': '/sounds/phonemes/v.mp3',
-      'W': '/sounds/phonemes/w.mp3',
-      'X': '/sounds/phonemes/x.mp3',
-      'Y': '/sounds/phonemes/y.mp3',
-      'Z': '/sounds/phonemes/z.mp3'
-    };
-
-    const url = phonemeUrls[phoneme.toUpperCase()];
-    if (url) {
-      await this.playSound(url);
-    }
+  async playPhonemeSound(audioPaths: { us: string; uk: string; in: string }): Promise<void> {
+    await this.playSound(audioPaths);
   }
 
   async playSuccessSound(): Promise<void> {
@@ -115,24 +103,16 @@ class AudioManager {
     return this.isEnabled;
   }
 
-  // Resume audio context on user interaction (required by many browsers)
   async resumeAudioContext(): Promise<void> {
     if (this.audioContext && this.audioContext.state === 'suspended') {
       await this.audioContext.resume();
     }
   }
 
-  // Preload commonly used sounds
-  async preloadSounds(): Promise<void> {
-    const soundsToPreload = [
-      '/sounds/success.mp3',
-      '/sounds/error.mp3',
-      '/sounds/welcome.mp3',
-      '/sounds/phonemes/a.mp3',
-      '/sounds/phonemes/b.mp3',
-      '/sounds/phonemes/c.mp3'
-    ];
-
+  async preloadSounds(audioPaths: { us: string; uk: string; in: string }[]): Promise<void> {
+    const soundsToPreload = audioPaths
+      .map(paths => paths[this.currentAccent])
+      .filter(url => url && url !== '/sounds/success.mp3' && url !== '/sounds/error.mp3');
     await Promise.all(soundsToPreload.map(url => this.loadSound(url)));
   }
 }

@@ -6,6 +6,7 @@ interface AppState {
   childName: string;
   selectedAvatar: string;
   soundEnabled: boolean;
+  accent: 'us' | 'uk' | 'in';
   
   // Game state
   currentLevel: number;
@@ -25,6 +26,7 @@ interface AppState {
   setChildName: (name: string) => void;
   setSelectedAvatar: (avatar: string) => void;
   setSoundEnabled: (enabled: boolean) => void;
+  setAccent: (accent: 'us' | 'uk' | 'in') => void;
   setCurrentLevel: (level: number) => void;
   incrementProgress: () => void;
   logError: () => void;
@@ -44,6 +46,7 @@ export const useAppState = create<AppState>()(
       childName: '',
       selectedAvatar: '',
       soundEnabled: true,
+      accent: 'us',
       currentLevel: 1,
       progress: 0,
       errors: 0,
@@ -57,6 +60,7 @@ export const useAppState = create<AppState>()(
       setChildName: (name) => set({ childName: name }),
       setSelectedAvatar: (avatar) => set({ selectedAvatar: avatar }),
       setSoundEnabled: (enabled) => set({ soundEnabled: enabled }),
+      setAccent: (accent) => set({ accent }),
       setCurrentLevel: (level) => set({ currentLevel: level }),
       
       incrementProgress: () => set((state) => ({ 
@@ -95,6 +99,7 @@ export const useAppState = create<AppState>()(
         childName: state.childName,
         selectedAvatar: state.selectedAvatar,
         soundEnabled: state.soundEnabled,
+        accent: state.accent,
         currentLevel: state.currentLevel,
         progress: state.progress,
         streak: state.streak,
