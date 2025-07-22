@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "v-leap",
+    "v-leap": "v-leap"
+  },
+  "targets": {
+    "vedyx-ai": {
+      "hosting": {
+        "leap": [
+          "vedyx-leap"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

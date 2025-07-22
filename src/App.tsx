@@ -5,6 +5,8 @@ import WelcomeScreen from './pages/WelcomeScreen';
 import GameScreen from './pages/GameScreen';
 import ParentDashboard from './pages/ParentDashboard';
 import OnboardingScreen from './pages/OnboardingScreen';
+import UnitLoader from "./pages/UnitLoader";
+import UnitPlayer from "./pages/UnitPlayer";
 import './App.css';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/onboarding" element={<OnboardingScreen />} />
           <Route path="/game" element={<GameScreen />} />
           <Route path="/dashboard" element={<ParentDashboard />} />
+          <Route path="/units" element={<UnitLoader />} />
+          <Route path="/unit/:unitId" element={<UnitPlayer />} />
         </Routes>
       </motion.div>
     </Router>

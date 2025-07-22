@@ -1,6 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { DndContext, DragEndEvent, DragOverlay, useDraggable, useDroppable } from '@dnd-kit/core';
+import { 
+  DndContext, 
+  DragEndEvent, 
+  DragOverlay, 
+  useDraggable, 
+  useDroppable,
+  TouchSensor,
+  MouseSensor,
+  useSensor,
+  useSensors,
+  PointerSensor
+} from '@dnd-kit/core';
 import { Home, Volume2, Heart, RefreshCw, HelpCircle, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAppState } from '../store/useAppState';
@@ -32,6 +43,28 @@ const GameScreen: React.FC = () => {
   const [attempts, setAttempts] = useState(0);
   const [encouragementMessage, setEncouragementMessage] = useState('');
   const [showEncouragement, setShowEncouragement] = useState(false);
+
+  // Configure sensors for better mobile support
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 8, // Require 8px movement before dragging starts
+    },
+  });
+
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 100, // 100ms delay before drag starts
+      tolerance: 8, // Allow 8px movement during delay
+    },
+  });
+
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 8,
+    },
+  });
+
+  const sensors = useSensors(mouseSensor, touchSensor, pointerSensor);
 
   // Encouragement messages for different scenarios
   const encouragementMessages = {
@@ -183,7 +216,6 @@ const GameScreen: React.FC = () => {
 
   const playPhonemeAudio = useCallback(async (phoneme: PhonemeCard) => {
     try {
-      // Resume audio context if suspended
       await audioManager.resumeAudioContext();
       await audioManager.playPhonemeSound(phoneme.audio);
     } catch (error) {
@@ -195,18 +227,6 @@ const GameScreen: React.FC = () => {
     const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
       id: phoneme.id,
     });
-
-    // Create modified listeners that exclude the speaker button
-    const dragListeners = {
-      ...listeners,
-      onPointerDown: (e: any) => {
-        // Don't start drag if clicking on speaker button or its children
-        if (e.target.closest('.speaker-button')) {
-          return;
-        }
-        listeners?.onPointerDown?.(e);
-      }
-    };
 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
@@ -232,39 +252,41 @@ const GameScreen: React.FC = () => {
       <motion.div
         ref={setNodeRef}
         style={style}
-        {...dragListeners}
-        {...attributes}
-        className={`bg-white rounded-2xl p-6 shadow-lg border-3 border-gray-200 cursor-grab active:cursor-grabbing transition-all ${
-          isDragging ? 'opacity-50 rotate-3 scale-105 shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2 hover:scale-105'
+        className={`bg-white rounded-2xl p-4 md:p-6 shadow-lg border-2 border-gray-200 select-none transition-all ${
+          isDragging ? 'opacity-50 rotate-3 scale-105 shadow-2xl z-50' : 'hover:shadow-xl hover:-translate-y-1 hover:scale-105'
         }`}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         layout
+        {...attributes}
+        {...listeners}
       >
         <div className="text-center">
-          <div className="text-5xl mb-3">{phoneme.emoji}</div>
-          <div className="text-3xl font-bold text-gray-800 mb-2">{phoneme.phoneme}</div>
-          <div className="text-lg text-gray-600 mb-1">{phoneme.word}</div>
-          <div className="text-sm text-gray-500 mb-3">{phoneme.grapheme}</div>
+          <div className="text-4xl md:text-5xl mb-2 md:mb-3">{phoneme.emoji}</div>
+          <div className="text-2xl md:text-3xl font-bold text-gray-800 mb-1 md:mb-2">{phoneme.phoneme}</div>
+          <div className="text-base md:text-lg text-gray-600 mb-1">{phoneme.word}</div>
+          <div className="text-sm text-gray-500 mb-2 md:mb-3">{phoneme.grapheme}</div>
           <button
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
               playPhonemeAudio(phoneme);
             }}
-            onPointerDown={(e) => {
+            onTouchStart={(e) => {
               e.stopPropagation();
             }}
             onMouseDown={(e) => {
               e.stopPropagation();
             }}
-            onTouchStart={(e) => {
-              e.stopPropagation();
+            className="speaker-button p-2 md:p-3 bg-blue-100 rounded-full hover:bg-blue-200 transition-all hover:scale-110 active:scale-95 relative z-20"
+            style={{ 
+              touchAction: 'manipulation',
+              WebkitTouchCallout: 'none',
+              WebkitUserSelect: 'none',
+              userSelect: 'none'
             }}
-            style={{ touchAction: 'none' }}
-            className="speaker-button p-3 bg-blue-100 rounded-full hover:bg-blue-200 transition-all hover:scale-110 active:scale-95 relative z-10"
           >
-            <Volume2 className="w-5 h-5 text-blue-600 pointer-events-none" />
+            <Volume2 className="w-4 h-4 md:w-5 md:h-5 text-blue-600 pointer-events-none" />
           </button>
         </div>
       </motion.div>
@@ -281,7 +303,7 @@ const GameScreen: React.FC = () => {
     return (
       <motion.div
         ref={setNodeRef}
-        className={`w-24 h-24 rounded-2xl border-4 border-dashed flex items-center justify-center text-3xl font-bold transition-all ${
+        className={`w-20 h-20 md:w-24 md:h-24 rounded-2xl border-4 border-dashed flex items-center justify-center text-2xl md:text-3xl font-bold transition-all ${
           isMatched 
             ? 'border-green-500 bg-green-100 text-green-700' 
             : isOver 
@@ -300,56 +322,56 @@ const GameScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-mint-50 via-blue-50 to-purple-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-mint-50 via-blue-50 to-purple-50 p-2 md:p-4">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
         <button
           onClick={() => navigate('/')}
-          className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+          className="p-2 md:p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
         >
-          <Home className="w-6 h-6 text-gray-600" />
+          <Home className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
         </button>
         
-        <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-lg">
-          <span className="text-2xl">{selectedAvatar}</span>
-          <span className="font-semibold text-gray-800">{childName}</span>
+        <div className="flex items-center gap-2 bg-white rounded-full px-3 py-2 md:px-4 shadow-lg">
+          <span className="text-xl md:text-2xl">{selectedAvatar}</span>
+          <span className="font-semibold text-gray-800 text-sm md:text-base">{childName}</span>
           <div className="flex items-center gap-1 ml-2">
             <Heart className="w-4 h-4 text-red-500" />
             <span className="text-sm font-medium">5</span>
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1 md:gap-2">
           <button
             onClick={playAllSounds}
-            className="p-3 bg-yellow-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="p-2 md:p-3 bg-yellow-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
             title="Play all sounds"
           >
-            <Volume2 className="w-6 h-6 text-yellow-600" />
+            <Volume2 className="w-5 h-5 md:w-6 md:h-6 text-yellow-600" />
           </button>
           
           <button
             onClick={() => setShowHint(true)}
-            className="p-3 bg-purple-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="p-2 md:p-3 bg-purple-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
             title="Show hint"
           >
-            <HelpCircle className="w-6 h-6 text-purple-600" />
+            <HelpCircle className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
           </button>
           
           <button
             onClick={resetLevel}
-            className="p-3 bg-gray-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="p-2 md:p-3 bg-gray-100 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
             title="Start over"
           >
-            <RefreshCw className="w-6 h-6 text-gray-600" />
+            <RefreshCw className="w-5 h-5 md:w-6 md:h-6 text-gray-600" />
           </button>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="max-w-4xl mx-auto mb-6">
+      <div className="max-w-4xl mx-auto mb-4 md:mb-6">
         <div className="bg-white rounded-full p-2 shadow-lg">
-          <div className="bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div className="bg-gray-200 rounded-full h-3 md:h-4 overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-mint-400 to-blue-400 rounded-full"
               initial={{ width: 0 }}
@@ -357,7 +379,7 @@ const GameScreen: React.FC = () => {
               transition={{ type: "spring", stiffness: 100, damping: 15 }}
             />
           </div>
-          <div className="text-center mt-2 text-sm font-medium text-gray-600">
+          <div className="text-center mt-2 text-xs md:text-sm font-medium text-gray-600">
             {correctMatches.length} of {currentLevel.length} matched! 🎯
           </div>
         </div>
@@ -370,11 +392,11 @@ const GameScreen: React.FC = () => {
             initial={{ opacity: 0, y: -20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.8 }}
-            className="fixed top-20 left-1/2 transform -translate-x-1/2 z-20 bg-white rounded-2xl p-4 shadow-xl border-2 border-mint-300"
+            className="fixed top-16 md:top-20 left-1/2 transform -translate-x-1/2 z-30 bg-white rounded-2xl p-3 md:p-4 shadow-xl border-2 border-mint-300 max-w-xs md:max-w-md mx-2"
           >
             <div className="text-center">
-              <Zap className="w-6 h-6 text-mint-500 mx-auto mb-2" />
-              <p className="text-lg font-medium text-gray-800">{encouragementMessage}</p>
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-mint-500 mx-auto mb-2" />
+              <p className="text-base md:text-lg font-medium text-gray-800">{encouragementMessage}</p>
             </div>
           </motion.div>
         )}
@@ -387,24 +409,24 @@ const GameScreen: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30"
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40 p-4"
             onClick={() => setShowHint(false)}
           >
             <motion.div
               initial={{ scale: 0.8, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.8, y: 20 }}
-              className="bg-white rounded-2xl p-6 max-w-md mx-4 shadow-2xl"
+              className="bg-white rounded-2xl p-4 md:p-6 max-w-sm md:max-w-md mx-4 shadow-2xl"
             >
               <div className="text-center">
-                <div className="text-4xl mb-3">💡</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Hint!</h3>
-                <p className="text-gray-600 mb-4">
+                <div className="text-3xl md:text-4xl mb-3">💡</div>
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">Hint!</h3>
+                <p className="text-gray-600 mb-4 text-sm md:text-base">
                   Listen to the sounds by tapping the 🔊 button, then match each card to the same letter!
                 </p>
                 <button
                   onClick={() => setShowHint(false)}
-                  className="px-6 py-2 bg-mint-500 text-white rounded-full hover:bg-mint-600 transition-colors"
+                  className="px-4 md:px-6 py-2 bg-mint-500 text-white rounded-full hover:bg-mint-600 transition-colors text-sm md:text-base"
                 >
                   Got it! 👍
                 </button>
@@ -414,22 +436,26 @@ const GameScreen: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <DndContext onDragEnd={handleDragEnd} onDragStart={({ active }) => setActiveId(active.id as string)}>
+      <DndContext 
+        sensors={sensors}
+        onDragEnd={handleDragEnd} 
+        onDragStart={({ active }) => setActiveId(active.id as string)}
+      >
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-3">Match the letters! 🎯</h2>
-            <p className="text-lg text-gray-600">Drag each card to its matching letter sound</p>
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3">Match the letters! 🎯</h2>
+            <p className="text-base md:text-lg text-gray-600">Drag each card to its matching letter sound</p>
           </div>
           
           {/* Drop Zones */}
-          <div className="flex justify-center gap-8 mb-12">
+          <div className="flex justify-center gap-4 md:gap-8 mb-8 md:mb-12">
             {dropZones.map(zone => (
               <DropZone key={zone.id} id={zone.id} phoneme={zone.phoneme} />
             ))}
           </div>
           
           {/* Draggable Cards */}
-          <div className="flex justify-center gap-6 flex-wrap">
+          <div className="flex justify-center gap-3 md:gap-6 flex-wrap px-2">
             <AnimatePresence>
               {currentLevel.map(phoneme => (
                 <DraggablePhoneme key={phoneme.id} phoneme={phoneme} />
@@ -440,12 +466,12 @@ const GameScreen: React.FC = () => {
         
         <DragOverlay>
           {activeId ? (
-            <div className="bg-white rounded-2xl p-6 shadow-2xl border-3 border-mint-500 rotate-3 scale-105">
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-2xl border-2 border-mint-500 rotate-3 scale-105 opacity-90">
               <div className="text-center">
-                <div className="text-5xl mb-3">
+                <div className="text-4xl md:text-5xl mb-2 md:mb-3">
                   {currentLevel.find(p => p.id === activeId)?.emoji}
                 </div>
-                <div className="text-3xl font-bold text-gray-800">
+                <div className="text-2xl md:text-3xl font-bold text-gray-800">
                   {currentLevel.find(p => p.id === activeId)?.phoneme}
                 </div>
               </div>

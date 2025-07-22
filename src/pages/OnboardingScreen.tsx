@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Volume2, VolumeX, ArrowRight, User, Star } from 'lucide-react';
+import { Volume2, VolumeX, ArrowRight, User, Star, Globe } from 'lucide-react';
 import { useAppState } from '../store/useAppState';
+import { audioManager } from '../utils/audioManager';
 
 const OnboardingScreen: React.FC = () => {
   const navigate = useNavigate();
-  const { setChildName, setSelectedAvatar } = useAppState();
+  const { setChildName, setSelectedAvatar, accent, setAccent } = useAppState();
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState('');
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -24,10 +25,17 @@ const OnboardingScreen: React.FC = () => {
     }
   };
 
+  // Handle accent change
+  const handleAccentChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newAccent = event.target.value as 'us' | 'uk' | 'in';
+    setAccent(newAccent);
+    audioManager.setAccent(newAccent);
+  };
+
   const handleComplete = () => {
     setChildName(name);
     setSelectedAvatar(avatar);
-    navigate('/game');
+    navigate('/units');
   };
 
   const renderStep = () => {
@@ -110,6 +118,40 @@ const OnboardingScreen: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-mint-400 to-blue-400 rounded-full flex items-center justify-center">
+              <Globe className="w-12 h-12 text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Choose your accent!</h2>
+            <p className="text-gray-600 mb-6">Select the pronunciation you'd like to learn</p>
+            
+            <select
+              value={accent}
+              onChange={handleAccentChange}
+              className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-xl focus:border-mint-500 focus:outline-none mb-6"
+            >
+              <option value="us">US English</option>
+              <option value="uk">UK English</option>
+              <option value="in">Indian English</option>
+            </select>
+
+            <button
+              onClick={() => setStep(4)}
+              className="w-full bg-gradient-to-r from-mint-500 to-mint-600 text-white py-3 px-6 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+            >
+              Next
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </motion.div>
+        );
+
+      case 4:
+        return (
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-mint-400 to-blue-400 rounded-full flex items-center justify-center">
               {soundEnabled ? <Volume2 className="w-12 h-12 text-white" /> : <VolumeX className="w-12 h-12 text-white" />}
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Sound check!</h2>
@@ -158,7 +200,7 @@ const OnboardingScreen: React.FC = () => {
         {/* Progress indicator */}
         <div className="flex justify-center mb-8">
           <div className="flex space-x-2">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
                 className={`w-3 h-3 rounded-full transition-all ${

@@ -4,12 +4,12 @@ import { getFirestore, doc, setDoc, getDoc, updateDoc, collection, query, where,
 
 // Firebase configuration - replace with your actual config
 const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-auth-domain",
-  projectId: "your-project-id",
-  storageBucket: "your-storage-bucket",
-  messagingSenderId: "your-messaging-sender-id",
-  appId: "your-app-id"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
@@ -17,7 +17,61 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-// Types
+// Types for your literacy app
+interface Unit {
+  id: string;
+  title: string;
+  description: string;
+  estimatedDuration: number;
+  unlockable: boolean;
+  coverImage?: string;
+  components: ComponentRef[];
+}
+
+interface ComponentRef {
+  type: 'story' | 'game' | 'ruleCard' | 'scenario';
+  ref: string;
+}
+
+interface BaseComponent {
+  id: string;
+  type: string;
+}
+
+interface StoryComponent extends BaseComponent {
+  type: 'story';
+  title: string;
+  text: string[];
+  audioUrls?: string[];
+  illustrations?: string[];
+}
+
+interface GameComponent extends BaseComponent {
+  type: 'game';
+  gameType: 'syllableTap' | 'dragSpelling' | 'phonemeMatch';
+  prompt: string;
+  words: string[];
+  phonemes?: string[][];
+  audioMap?: Record<string, string>;
+}
+
+interface RuleCardComponent extends BaseComponent {
+  type: 'ruleCard';
+  title: string;
+  body: string;
+  visual?: string;
+  examplePairs?: { before: string; after: string; }[];
+}
+
+interface ScenarioComponent extends BaseComponent {
+  type: 'scenario';
+  situation: string;
+  options: { text: string; correct: boolean; }[];
+  feedback: { correct: string; incorrect: string; };
+}
+
+type Component = StoryComponent | GameComponent | RuleCardComponent | ScenarioComponent;
+
 interface UserProfile {
   childName: string;
   parentEmail: string;
@@ -54,7 +108,6 @@ class FirebaseService {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       
-      // Create user profile
       await this.createUserProfile(user.uid, {
         childName,
         parentEmail: email,
@@ -86,6 +139,79 @@ class FirebaseService {
       await signOut(auth);
     } catch (error) {
       console.error('Error signing out:', error);
+      throw error;
+    }
+  }
+
+  // Unit and Component Management
+  async getUnits(): Promise<Unit[]> {
+    try {
+      const unitsQuery = query(collection(db, 'units'));
+      const querySnapshot = await getDocs(unitsQuery);
+      const units: Unit[] = [];
+      
+      querySnapshot.forEach((doc) => {
+        units.push({ id: doc.id, ...doc.data() } as Unit);
+      });
+      
+      return units;
+    } catch (error) {
+      console.error('Error getting units:', error);
+      throw error;
+    }
+  }
+
+  async getUnit(unitId: string): Promise<Unit | null> {
+    try {
+      const unitRef = doc(db, 'units', unitId);
+      const unitSnap = await getDoc(unitRef);
+      
+      if (unitSnap.exists()) {
+        return { id: unitSnap.id, ...unitSnap.data() } as Unit;
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching unit:', error);
+      throw error;
+    }
+  }
+
+  async getComponent(componentId: string): Promise<Component | null> {
+    try {
+      const componentRef = doc(db, 'components', componentId);
+      const componentSnap = await getDoc(componentRef);
+      
+      if (componentSnap.exists()) {
+        return { id: componentSnap.id, ...componentSnap.data() } as Component;
+      }
+      return null;
+    } catch (error) {
+      console.error('Error fetching component:', error);
+      throw error;
+    }
+  }
+
+  async getUnitWithComponents(unitId: string): Promise<{ unit: Unit; components: Component[] }> {
+    try {
+      const unit = await this.getUnit(unitId);
+      if (!unit) {
+        throw new Error(`Unit ${unitId} not found`);
+      }
+
+      const components: Component[] = [];
+      
+      for (const componentRef of unit.components) {
+        // Extract component ID from ref (e.g., "components/story-bake-sale" -> "story-bake-sale")
+        const componentId = componentRef.ref.split('/')[1];
+        const component = await this.getComponent(componentId);
+        if (component) {
+          components.push(component);
+        }
+      }
+
+      return { unit, components };
+    } catch (error) {
+      console.error('Error getting unit with components:', error);
       throw error;
     }
   }
@@ -214,7 +340,6 @@ class FirebaseService {
         this.getGameSessions(userId, 30)
       ]);
 
-      // Calculate statistics
       const totalSessions = sessions.length;
       const totalPhonemes = sessions.reduce((sum, session) => sum + session.phonemesCompleted, 0);
       const totalErrors = sessions.reduce((sum, session) => sum + session.errorsCount, 0);
@@ -237,3 +362,7 @@ class FirebaseService {
 }
 
 export const firebaseService = new FirebaseService();
+
+// Export functions for backwards compatibility
+export const getUnits = () => firebaseService.getUnits();
+export const getUnitWithComponents = (unitId: string) => firebaseService.getUnitWithComponents(unitId);
