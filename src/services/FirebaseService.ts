@@ -26,11 +26,44 @@ interface Unit {
   unlockable: boolean;
   coverImage?: string;
   components: ComponentRef[];
+  prerequisites?: string[];
+  masteryThreshold?: number;
 }
 
 interface ComponentRef {
-  type: 'story' | 'game' | 'ruleCard' | 'scenario';
+  type: 'story' | 'game' | 'ruleCard' | 'scenario' | 'assessment';
   ref: string;
+  required?: boolean;
+  passingScore?: number;
+}
+
+interface AssessmentTask {
+  id: string;
+  type: 'wordReading' | 'soundIdentification' | 'comprehension';
+  prompt: string;
+  word?: string;
+  audioUrl?: string;
+  options?: string[];
+  correct?: number;
+  timeLimit?: number;
+}
+
+interface AssessmentComponent extends BaseComponent {
+  type: 'assessment';
+  title: string;
+  instructions: string;
+  tasks: AssessmentTask[];
+  passingScore: number;
+  feedback: {
+    pass: string;
+    fail: string;
+  };
+}
+
+interface ComprehensionQuestion {
+  question: string;
+  options: string[];
+  correct: number;
 }
 
 interface BaseComponent {
@@ -44,15 +77,26 @@ interface StoryComponent extends BaseComponent {
   text: string[];
   audioUrls?: string[];
   illustrations?: string[];
+  comprehensionQuestions?: ComprehensionQuestion[];
 }
 
 interface GameComponent extends BaseComponent {
   type: 'game';
-  gameType: 'syllableTap' | 'dragSpelling' | 'phonemeMatch';
+  gameType: 'syllableTap' | 'dragSpelling' | 'phonemeMatch' | 'audioDiscrimination' | 'patternMatching' | 'speedReading' | 'guidedReading';
   prompt: string;
   words: string[];
   phonemes?: string[][];
   audioMap?: Record<string, string>;
+  wordPairs?: Array<{
+    pair: string[];
+    audioUrls: string[];
+    correct: number;
+  }>;
+  categories?: Array<{
+    name: string;
+    pattern: RegExp;
+  }>;
+  timeLimit?: number;
 }
 
 interface RuleCardComponent extends BaseComponent {
@@ -66,11 +110,43 @@ interface RuleCardComponent extends BaseComponent {
 interface ScenarioComponent extends BaseComponent {
   type: 'scenario';
   situation: string;
-  options: { text: string; correct: boolean; }[];
+  options: { 
+    text: string; 
+    correct: boolean;
+    feedback?: string; 
+  }[];
   feedback: { correct: string; incorrect: string; };
+  context?: string;
+  difficulty?: 'guided' | 'independent' | 'challenge';
+  hints?: string[];
+  illustration?: string;
 }
 
-type Component = StoryComponent | GameComponent | RuleCardComponent | ScenarioComponent;
+type Component = StoryComponent | GameComponent | RuleCardComponent | ScenarioComponent | AssessmentComponent;
+
+interface ComponentProgress {
+  componentId: string;
+  completed: boolean;
+  score?: number;
+  attempts: number;
+  timeSpent: number;
+  masteryAchieved: boolean;
+  errors?: string[];
+  timestamp: any;
+  passed?: boolean; // For assessments
+}
+
+interface UnitProgress {
+  unitId: string;
+  userId: string;
+  startedAt: any;
+  completedAt?: any;
+  currentComponentIndex: number;
+  overallScore: number;
+  masteryAchieved: boolean;
+  componentProgress: ComponentProgress[];
+  adaptivePath?: string[];
+}
 
 interface UserProfile {
   childName: string;
@@ -182,11 +258,132 @@ class FirebaseService {
       const componentSnap = await getDoc(componentRef);
       
       if (componentSnap.exists()) {
-        return { id: componentSnap.id, ...componentSnap.data() } as Component;
+        const componentData = { id: componentSnap.id, ...componentSnap.data() } as Component;
+        
+        // Handle RegExp patterns for pattern matching games
+        if (componentData.type === 'game' && componentData.gameType === 'patternMatching' && componentData.categories) {
+          componentData.categories = componentData.categories.map(cat => ({
+            ...cat,
+            pattern: new RegExp(cat.pattern as any) // Convert string back to RegExp
+          }));
+        }
+        
+        return componentData;
       }
       return null;
     } catch (error) {
       console.error('Error fetching component:', error);
+      throw error;
+    }
+  }
+
+  async saveUnitProgress(userId: string, unitProgress: Omit<UnitProgress, 'startedAt' | 'completedAt'>): Promise<void> {
+    try {
+      const progressRef = doc(db, 'unitProgress', `${userId}_${unitProgress.unitId}`);
+      const existingDoc = await getDoc(progressRef);
+      
+      const updateData: any = {
+        ...unitProgress,
+        userId,
+        lastUpdated: serverTimestamp()
+      };
+
+      // Set startedAt only if it's a new progress document
+      if (!existingDoc.exists()) {
+        updateData.startedAt = serverTimestamp();
+      }
+
+      // Set completedAt if unit is complete
+      if (unitProgress.masteryAchieved && !existingDoc.data()?.completedAt) {
+        updateData.completedAt = serverTimestamp();
+      }
+
+      await setDoc(progressRef, updateData, { merge: true });
+    } catch (error) {
+      console.error('Error saving unit progress:', error);
+      throw error;
+    }
+  }
+
+  async getUnitProgress(userId: string, unitId: string): Promise<UnitProgress | null> {
+    try {
+      const progressRef = doc(db, 'unitProgress', `${userId}_${unitId}`);
+      const progressSnap = await getDoc(progressRef);
+      
+      if (progressSnap.exists()) {
+        return progressSnap.data() as UnitProgress;
+      }
+      return null;
+    } catch (error) {
+      console.error('Error getting unit progress:', error);
+      throw error;
+    }
+  }
+
+  async saveComponentProgress(userId: string, unitId: string, componentProgress: Omit<ComponentProgress, 'timestamp'>): Promise<void> {
+    try {
+      const progressRef = doc(db, 'componentProgress', `${userId}_${unitId}_${componentProgress.componentId}`);
+      await setDoc(progressRef, {
+        ...componentProgress,
+        userId,
+        unitId,
+        timestamp: serverTimestamp()
+      }, { merge: true });
+    } catch (error) {
+      console.error('Error saving component progress:', error);
+      throw error;
+    }
+  }
+
+  async checkPrerequisites(userId: string, unitId: string): Promise<boolean> {
+    try {
+      const unit = await this.getUnit(unitId);
+      if (!unit?.prerequisites || unit.prerequisites.length === 0) {
+        return true; // No prerequisites
+      }
+
+      // Check if user has completed all prerequisite units
+      for (const prereqUnitId of unit.prerequisites) {
+        const progress = await this.getUnitProgress(userId, prereqUnitId);
+        if (!progress || !progress.masteryAchieved) {
+          return false; // Prerequisite not completed
+        }
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error checking prerequisites:', error);
+      return false;
+    }
+  }
+
+  async getUserUnitStats(userId: string): Promise<any> {
+    try {
+      // Get all unit progress for user
+      const progressQuery = query(
+        collection(db, 'unitProgress'),
+        where('userId', '==', userId)
+      );
+      
+      const querySnapshot = await getDocs(progressQuery);
+      const unitProgresses: UnitProgress[] = [];
+      
+      querySnapshot.forEach((doc) => {
+        unitProgresses.push(doc.data() as UnitProgress);
+      });
+
+      const completedUnits = unitProgresses.filter(up => up.masteryAchieved).length;
+      const totalUnits = unitProgresses.length;
+      const averageScore = unitProgresses.reduce((sum, up) => sum + up.overallScore, 0) / totalUnits || 0;
+
+      return {
+        completedUnits,
+        totalUnits,
+        averageScore: Math.round(averageScore * 100),
+        unitProgresses: unitProgresses.sort((a, b) => b.startedAt - a.startedAt)
+      };
+    } catch (error) {
+      console.error('Error getting user unit stats:', error);
       throw error;
     }
   }
@@ -366,3 +563,9 @@ export const firebaseService = new FirebaseService();
 // Export functions for backwards compatibility
 export const getUnits = () => firebaseService.getUnits();
 export const getUnitWithComponents = (unitId: string) => firebaseService.getUnitWithComponents(unitId);
+
+export const getUnit = (unitId: string) => firebaseService.getUnit(unitId);
+export const getComponent = (componentId: string) => firebaseService.getComponent(componentId);
+export const saveUnitProgress = (userId: string, progress: any) => firebaseService.saveUnitProgress(userId, progress);
+export const getUnitProgress = (userId: string, unitId: string) => firebaseService.getUnitProgress(userId, unitId);
+export const checkPrerequisites = (userId: string, unitId: string) => firebaseService.checkPrerequisites(userId, unitId);
