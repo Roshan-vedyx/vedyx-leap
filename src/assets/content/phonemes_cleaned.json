@@ -1,0 +1,801 @@
+[
+  {
+    "id": "1",
+    "phoneme": "/b/",
+    "grapheme": "b, bb",
+    "audio": {
+      "us": "/sounds/phonemes/us_b.mp3",
+      "gb": "/sounds/phonemes/gb_b.mp3",
+      "in": "/sounds/phonemes/in_b.mp3"
+    },
+    "words": [
+      {
+        "word": "bat",
+        "emoji": "\ud83e\udd87",
+        "emojiName": "bat",
+        "audio": {
+          "us": "/sounds/us_b_bat.mp3",
+          "uk": "/sounds/gb_b_bat.mp3",
+          "in": "/sounds/in_b_bat.mp3"
+        },
+        "image": "/images/words/bat.png"
+      },
+      {
+        "word": "bug",
+        "emoji": "\ud83d\udc1e",
+        "emojiName": "lady beetle",
+        "audio": {
+          "us": "/sounds/us_b_bug.mp3",
+          "uk": "/sounds/gb_b_bug.mp3",
+          "in": "/sounds/in_b_bug.mp3"
+        },
+        "image": "/images/words/bug.png"
+      },
+      {
+        "word": "bun",
+        "emoji": "\ud83e\udd6f",
+        "emojiName": "bagel",
+        "audio": {
+          "us": "/sounds/us_b_bun.mp3",
+          "uk": "/sounds/gb_b_bun.mp3",
+          "in": "/sounds/in_b_bun.mp3"
+        },
+        "image": "/images/words/bun.png"
+      }
+    ],
+    "description": "The /b/ sound as in 'bat'",
+    "mouthImage": "/images/mouth/b.png"
+  },
+  {
+    "id": "2",
+    "phoneme": "/d/",
+    "grapheme": "d, dd, ed",
+    "audio": {
+      "us": "/sounds/phonemes/us_d.mp3",
+      "gb": "/sounds/phonemes/gb_d.mp3",
+      "in": "/sounds/phonemes/in_d.mp3"
+    },
+    "words": [
+      {
+        "word": "dog",
+        "emoji": "\ud83d\udc36",
+        "emojiName": "dog face",
+        "audio": {
+          "us": "/sounds/us_d_dog.mp3",
+          "uk": "/sounds/gb_d_dog.mp3",
+          "in": "/sounds/in_d_dog.mp3"
+        },
+        "image": "/images/words/dog.png"
+      },
+      {
+        "word": "dad",
+        "emoji": "\ud83d\udc68",
+        "emojiName": "man",
+        "audio": {
+          "us": "/sounds/us_d_dad.mp3",
+          "uk": "/sounds/gb_d_dad.mp3",
+          "in": "/sounds/in_d_dad.mp3"
+        },
+        "image": "/images/words/dad.png"
+      },
+      {
+        "word": "dot",
+        "emoji": "\ud83d\udd34",
+        "emojiName": "red circle",
+        "audio": {
+          "us": "/sounds/us_d_dot.mp3",
+          "uk": "/sounds/gb_d_dot.mp3",
+          "in": "/sounds/in_d_dot.mp3"
+        },
+        "image": "/images/words/dot.png"
+      }
+    ],
+    "description": "The /d/ sound as in 'dog'",
+    "mouthImage": "/images/mouth/d.png"
+  },
+  {
+    "id": "3",
+    "phoneme": "/f/",
+    "grapheme": "f, ff, ph, gh, lf, ft",
+    "audio": {
+      "us": "/sounds/phonemes/us_f.mp3",
+      "gb": "/sounds/phonemes/gb_f.mp3",
+      "in": "/sounds/phonemes/in_f.mp3"
+    },
+    "words": [
+      {
+        "word": "fan",
+        "emoji": "\ud83c\udf00",
+        "emojiName": "cyclone",
+        "audio": {
+          "us": "/sounds/us_f_fan.mp3",
+          "uk": "/sounds/gb_f_fan.mp3",
+          "in": "/sounds/in_f_fan.mp3"
+        },
+        "image": "/images/words/fan.png"
+      },
+      {
+        "word": "fun",
+        "emoji": "\ud83c\udf89",
+        "emojiName": "party popper",
+        "audio": {
+          "us": "/sounds/us_f_fun.mp3",
+          "uk": "/sounds/gb_f_fun.mp3",
+          "in": "/sounds/in_f_fun.mp3"
+        },
+        "image": "/images/words/fun.png"
+      },
+      {
+        "word": "fig",
+        "emoji": "\ud83e\udd5d",
+        "emojiName": "kiwi fruit",
+        "audio": {
+          "us": "/sounds/us_f_fig.mp3",
+          "uk": "/sounds/gb_f_fig.mp3",
+          "in": "/sounds/in_f_fig.mp3"
+        },
+        "image": "/images/words/fig.png"
+      }
+    ],
+    "description": "The /f/ sound as in 'fan'",
+    "mouthImage": "/images/mouth/f.png"
+  },
+  {
+    "id": "4",
+    "phoneme": "/g/",
+    "grapheme": "g, gg, gh, gu, gue",
+    "audio": {
+      "us": "/sounds/phonemes/us_g.mp3",
+      "gb": "/sounds/phonemes/gb_g.mp3",
+      "in": "/sounds/phonemes/in_g.mp3"
+    },
+    "words": [
+      {
+        "word": "gum",
+        "emoji": "\ud83c\udf6c",
+        "emojiName": "candy",
+        "audio": {
+          "us": "/sounds/us_g_gum.mp3",
+          "uk": "/sounds/gb_g_gum.mp3",
+          "in": "/sounds/in_g_gum.mp3"
+        },
+        "image": "/images/words/gum.png"
+      },
+      {
+        "word": "gap",
+        "emoji": "\ud83e\udeab",
+        "emojiName": "low battery",
+        "audio": {
+          "us": "/sounds/us_g_gap.mp3",
+          "uk": "/sounds/gb_g_gap.mp3",
+          "in": "/sounds/in_g_gap.mp3"
+        },
+        "image": "/images/words/gap.png"
+      },
+      {
+        "word": "gas",
+        "emoji": "\u26fd",
+        "emojiName": "fuel pump",
+        "audio": {
+          "us": "/sounds/us_g_gas.mp3",
+          "uk": "/sounds/gb_g_gas.mp3",
+          "in": "/sounds/in_g_gas.mp3"
+        },
+        "image": "/images/words/gas.png"
+      }
+    ],
+    "description": "The /g/ sound as in 'gum'",
+    "mouthImage": "/images/mouth/g.png"
+  },
+  {
+    "id": "5",
+    "phoneme": "/h/",
+    "grapheme": "h, wh",
+    "audio": {
+      "us": "/sounds/phonemes/us_h.mp3",
+      "gb": "/sounds/phonemes/gb_h.mp3",
+      "in": "/sounds/phonemes/in_h.mp3"
+    },
+    "words": [
+      {
+        "word": "hat",
+        "emoji": "\ud83c\udfa9",
+        "emojiName": "top hat",
+        "audio": {
+          "us": "/sounds/us_h_hat.mp3",
+          "uk": "/sounds/gb_h_hat.mp3",
+          "in": "/sounds/in_h_hat.mp3"
+        },
+        "image": "/images/words/hat.png"
+      },
+      {
+        "word": "hop",
+        "emoji": "\ud83d\udc07",
+        "emojiName": "rabbit",
+        "audio": {
+          "us": "/sounds/us_h_hop.mp3",
+          "uk": "/sounds/gb_h_hop.mp3",
+          "in": "/sounds/in_h_hop.mp3"
+        },
+        "image": "/images/words/hop.png"
+      },
+      {
+        "word": "hug",
+        "emoji": "\ud83e\udd17",
+        "emojiName": "hugging face",
+        "audio": {
+          "us": "/sounds/us_h_hug.mp3",
+          "uk": "/sounds/gb_h_hug.mp3",
+          "in": "/sounds/in_h_hug.mp3"
+        },
+        "image": "/images/words/hug.png"
+      }
+    ],
+    "description": "The /h/ sound as in 'hat'",
+    "mouthImage": "/images/mouth/h.png"
+  },
+  {
+    "id": "7",
+    "phoneme": "/k/",
+    "grapheme": "k, c, ch, cc, lk, qu ,q(u), ck, x",
+    "audio": {
+      "us": "/sounds/phonemes/us_k.mp3",
+      "gb": "/sounds/phonemes/gb_k.mp3",
+      "in": "/sounds/phonemes/in_k.mp3"
+    },
+    "words": [
+      {
+        "word": "cat",
+        "emoji": "\ud83d\udc31",
+        "emojiName": "cat face",
+        "audio": {
+          "us": "/sounds/us_k_cat.mp3",
+          "uk": "/sounds/gb_k_cat.mp3",
+          "in": "/sounds/in_k_cat.mp3"
+        },
+        "image": "/images/words/cat.png"
+      },
+      {
+        "word": "kit",
+        "emoji": "\ud83c\udf92",
+        "emojiName": "backpack",
+        "audio": {
+          "us": "/sounds/us_k_kit.mp3",
+          "uk": "/sounds/gb_k_kit.mp3",
+          "in": "/sounds/in_k_kit.mp3"
+        },
+        "image": "/images/words/kit.png"
+      },
+      {
+        "word": "cup",
+        "emoji": "\u2615",
+        "emojiName": "hot beverage",
+        "audio": {
+          "us": "/sounds/us_k_cup.mp3",
+          "uk": "/sounds/gb_k_cup.mp3",
+          "in": "/sounds/in_k_cup.mp3"
+        },
+        "image": "/images/words/cup.png"
+      }
+    ],
+    "description": "The /k/ sound as in 'cat'",
+    "mouthImage": "/images/mouth/k.png"
+  },
+  {
+    "id": "8",
+    "phoneme": "/l/",
+    "grapheme": "l, ll",
+    "audio": {
+      "us": "/sounds/phonemes/us_l.mp3",
+      "gb": "/sounds/phonemes/gb_l.mp3",
+      "in": "/sounds/phonemes/in_l.mp3"
+    },
+    "words": [
+      {
+        "word": "leg",
+        "emoji": "\ud83e\uddb5",
+        "emojiName": "leg",
+        "audio": {
+          "us": "/sounds/us_l_leg.mp3",
+          "uk": "/sounds/gb_l_leg.mp3",
+          "in": "/sounds/in_l_leg.mp3"
+        },
+        "image": "/images/words/leg.png"
+      },
+      {
+        "word": "log",
+        "emoji": "\ud83e\udeb5",
+        "emojiName": "wood",
+        "audio": {
+          "us": "/sounds/us_l_log.mp3",
+          "uk": "/sounds/gb_l_log.mp3",
+          "in": "/sounds/in_l_log.mp3"
+        },
+        "image": "/images/words/log.png"
+      },
+      {
+        "word": "lip",
+        "emoji": "\ud83d\udc44",
+        "emojiName": "mouth",
+        "audio": {
+          "us": "/sounds/us_l_lip.mp3",
+          "uk": "/sounds/gb_l_lip.mp3",
+          "in": "/sounds/in_l_lip.mp3"
+        },
+        "image": "/images/words/lip.png"
+      }
+    ],
+    "description": "The /l/ sound as in 'leg'",
+    "mouthImage": "/images/mouth/l.png"
+  },
+  {
+    "id": "9",
+    "phoneme": "/m/",
+    "grapheme": "m, mm, mb, mn, lm",
+    "audio": {
+      "us": "/sounds/phonemes/us_m.mp3",
+      "gb": "/sounds/phonemes/gb_m.mp3",
+      "in": "/sounds/phonemes/in_m.mp3"
+    },
+    "words": [
+      {
+        "word": "mat",
+        "emoji": "\ud83e\uddd8",
+        "emojiName": "person in lotus position",
+        "audio": {
+          "us": "/sounds/us_m_mat.mp3",
+          "uk": "/sounds/gb_m_mat.mp3",
+          "in": "/sounds/in_m_mat.mp3"
+        },
+        "image": "/images/words/mat.png"
+      },
+      {
+        "word": "mug",
+        "emoji": "\u2615",
+        "emojiName": "hot beverage",
+        "audio": {
+          "us": "/sounds/us_m_mug.mp3",
+          "uk": "/sounds/gb_m_mug.mp3",
+          "in": "/sounds/in_m_mug.mp3"
+        },
+        "image": "/images/words/mug.png"
+      },
+      {
+        "word": "man",
+        "emoji": "\ud83d\udc68",
+        "emojiName": "man",
+        "audio": {
+          "us": "/sounds/us_m_man.mp3",
+          "uk": "/sounds/gb_m_man.mp3",
+          "in": "/sounds/in_m_man.mp3"
+        },
+        "image": "/images/words/man.png"
+      }
+    ],
+    "description": "The /m/ sound as in 'mat'",
+    "mouthImage": "/images/mouth/m.png"
+  },
+  {
+    "id": "10",
+    "phoneme": "/n/",
+    "grapheme": "n, nn, kn, gn, pn, mn",
+    "audio": {
+      "us": "/sounds/phonemes/us_n.mp3",
+      "gb": "/sounds/phonemes/gb_n.mp3",
+      "in": "/sounds/phonemes/in_n.mp3"
+    },
+    "words": [
+      {
+        "word": "net",
+        "emoji": "\ud83e\udd45",
+        "emojiName": "goal net",
+        "audio": {
+          "us": "/sounds/us_n_net.mp3",
+          "uk": "/sounds/gb_n_net.mp3",
+          "in": "/sounds/in_n_net.mp3"
+        },
+        "image": "/images/words/net.png"
+      },
+      {
+        "word": "nap",
+        "emoji": "\ud83d\udecc",
+        "emojiName": "person in bed",
+        "audio": {
+          "us": "/sounds/us_n_nap.mp3",
+          "uk": "/sounds/gb_n_nap.mp3",
+          "in": "/sounds/in_n_nap.mp3"
+        },
+        "image": "/images/words/nap.png"
+      },
+      {
+        "word": "nut",
+        "emoji": "\ud83e\udd5c",
+        "emojiName": "peanuts",
+        "audio": {
+          "us": "/sounds/us_n_nut.mp3",
+          "uk": "/sounds/gb_n_nut.mp3",
+          "in": "/sounds/in_n_nut.mp3"
+        },
+        "image": "/images/words/nut.png"
+      }
+    ],
+    "description": "The /n/ sound as in 'net'",
+    "mouthImage": "/images/mouth/n.png"
+  },
+  {
+    "id": "11",
+    "phoneme": "/p/",
+    "grapheme": "p, pp",
+    "audio": {
+      "us": "/sounds/phonemes/us_p.mp3",
+      "gb": "/sounds/phonemes/gb_p.mp3",
+      "in": "/sounds/phonemes/in_p.mp3"
+    },
+    "words": [
+      {
+        "word": "pin",
+        "emoji": "\ud83d\udccc",
+        "emojiName": "pushpin",
+        "audio": {
+          "us": "/sounds/us_p_pin.mp3",
+          "uk": "/sounds/gb_p_pin.mp3",
+          "in": "/sounds/in_p_pin.mp3"
+        },
+        "image": "/images/words/pin.png"
+      },
+      {
+        "word": "pot",
+        "emoji": "\ud83c\udf72",
+        "emojiName": "pot of food",
+        "audio": {
+          "us": "/sounds/us_p_pot.mp3",
+          "uk": "/sounds/gb_p_pot.mp3",
+          "in": "/sounds/in_p_pot.mp3"
+        },
+        "image": "/images/words/pot.png"
+      },
+      {
+        "word": "pan",
+        "emoji": "\ud83c\udf73",
+        "emojiName": "cooking",
+        "audio": {
+          "us": "/sounds/us_p_pan.mp3",
+          "uk": "/sounds/gb_p_pan.mp3",
+          "in": "/sounds/in_p_pan.mp3"
+        },
+        "image": "/images/words/pan.png"
+      }
+    ],
+    "description": "The /p/ sound as in 'pin'",
+    "mouthImage": "/images/mouth/p.png"
+  },
+  {
+    "id": "12",
+    "phoneme": "/r/",
+    "grapheme": "r, rr, wr, rh",
+    "audio": {
+      "us": "/sounds/phonemes/us_r.mp3",
+      "gb": "/sounds/phonemes/gb_r.mp3",
+      "in": "/sounds/phonemes/in_r.mp3"
+    },
+    "words": [
+      {
+        "word": "rat",
+        "emoji": "\ud83d\udc00",
+        "emojiName": "rat",
+        "audio": {
+          "us": "/sounds/us_r_rat.mp3",
+          "uk": "/sounds/gb_r_rat.mp3",
+          "in": "/sounds/in_r_rat.mp3"
+        },
+        "image": "/images/words/rat.png"
+      },
+      {
+        "word": "run",
+        "emoji": "\ud83c\udfc3",
+        "emojiName": "person running",
+        "audio": {
+          "us": "/sounds/us_r_run.mp3",
+          "uk": "/sounds/gb_r_run.mp3",
+          "in": "/sounds/in_r_run.mp3"
+        },
+        "image": "/images/words/run.png"
+      },
+      {
+        "word": "red",
+        "emoji": "\ud83d\udd34",
+        "emojiName": "red circle",
+        "audio": {
+          "us": "/sounds/us_r_red.mp3",
+          "uk": "/sounds/gb_r_red.mp3",
+          "in": "/sounds/in_r_red.mp3"
+        },
+        "image": "/images/words/red.png"
+      }
+    ],
+    "description": "The /r/ sound as in 'rat'",
+    "mouthImage": "/images/mouth/r.png"
+  },
+  {
+    "id": "13",
+    "phoneme": "/s/",
+    "grapheme": "s, ss, c, sc, ps, st, ce, se",
+    "audio": {
+      "us": "/sounds/phonemes/us_s.mp3",
+      "gb": "/sounds/phonemes/gb_s.mp3",
+      "in": "/sounds/phonemes/in_s.mp3"
+    },
+    "words": [
+      {
+        "word": "sun",
+        "emoji": "\ud83c\udf1e",
+        "emojiName": "sun with face",
+        "audio": {
+          "us": "/sounds/us_s_sun.mp3",
+          "uk": "/sounds/gb_s_sun.mp3",
+          "in": "/sounds/in_s_sun.mp3"
+        },
+        "image": "/images/words/sun.png"
+      },
+      {
+        "word": "sit",
+        "emoji": "\ud83e\ude91",
+        "emojiName": "chair",
+        "audio": {
+          "us": "/sounds/us_s_sit.mp3",
+          "uk": "/sounds/gb_s_sit.mp3",
+          "in": "/sounds/in_s_sit.mp3"
+        },
+        "image": "/images/words/sit.png"
+      },
+      {
+        "word": "sock",
+        "emoji": "\ud83e\udde6",
+        "emojiName": "socks",
+        "audio": {
+          "us": "/sounds/us_s_sock.mp3",
+          "uk": "/sounds/gb_s_sock.mp3",
+          "in": "/sounds/in_s_sock.mp3"
+        },
+        "image": "/images/words/sock.png"
+      }
+    ],
+    "description": "The /s/ sound as in 'sun'",
+    "mouthImage": "/images/mouth/s.png"
+  },
+  {
+    "id": "14",
+    "phoneme": "/t/",
+    "grapheme": "t, tt, th, ed",
+    "audio": {
+      "us": "/sounds/phonemes/us_t.mp3",
+      "gb": "/sounds/phonemes/gb_t.mp3",
+      "in": "/sounds/phonemes/in_t.mp3"
+    },
+    "words": [
+      {
+        "word": "top",
+        "emoji": "\ud83d\udd1d",
+        "emojiName": "top arrow",
+        "audio": {
+          "us": "/sounds/us_t_top.mp3",
+          "uk": "/sounds/gb_t_top.mp3",
+          "in": "/sounds/in_t_top.mp3"
+        },
+        "image": "/images/words/top.png"
+      },
+      {
+        "word": "tap",
+        "emoji": "\ud83d\udeb0",
+        "emojiName": "potable water",
+        "audio": {
+          "us": "/sounds/us_t_tap.mp3",
+          "uk": "/sounds/gb_t_tap.mp3",
+          "in": "/sounds/in_t_tap.mp3"
+        },
+        "image": "/images/words/tap.png"
+      },
+      {
+        "word": "tip",
+        "emoji": "\ud83d\udca1",
+        "emojiName": "light bulb",
+        "audio": {
+          "us": "/sounds/us_t_tip.mp3",
+          "uk": "/sounds/gb_t_tip.mp3",
+          "in": "/sounds/in_t_tip.mp3"
+        },
+        "image": "/images/words/tip.png"
+      }
+    ],
+    "description": "The /t/ sound as in 'top'",
+    "mouthImage": "/images/mouth/t.png"
+  },
+  {
+    "id": "15",
+    "phoneme": "/v/",
+    "grapheme": "v, f, ph, ve",
+    "audio": {
+      "us": "/sounds/phonemes/us_v.mp3",
+      "gb": "/sounds/phonemes/gb_v.mp3",
+      "in": "/sounds/phonemes/in_v.mp3"
+    },
+    "words": [
+      {
+        "word": "van",
+        "emoji": "\ud83d\ude90",
+        "emojiName": "minibus",
+        "audio": {
+          "us": "/sounds/us_v_van.mp3",
+          "uk": "/sounds/gb_v_van.mp3",
+          "in": "/sounds/in_v_van.mp3"
+        },
+        "image": "/images/words/van.png"
+      },
+      {
+        "word": "vet",
+        "emoji": "\ud83e\uddd1\u200d\u2695\ufe0f",
+        "emojiName": "health worker",
+        "audio": {
+          "us": "/sounds/us_v_vet.mp3",
+          "uk": "/sounds/gb_v_vet.mp3",
+          "in": "/sounds/in_v_vet.mp3"
+        },
+        "image": "/images/words/vet.png"
+      },
+      {
+        "word": "vine",
+        "emoji": "\ud83c\udf3f",
+        "emojiName": "herb",
+        "audio": {
+          "us": "/sounds/us_v_vine.mp3",
+          "uk": "/sounds/gb_v_vine.mp3",
+          "in": "/sounds/in_v_vine.mp3"
+        },
+        "image": "/images/words/vine.png"
+      }
+    ],
+    "description": "The /v/ sound as in 'van'",
+    "mouthImage": "/images/mouth/v.png"
+  },
+  {
+    "id": "16",
+    "phoneme": "/w/",
+    "grapheme": "w, wh, u, o",
+    "audio": {
+      "us": "/sounds/phonemes/us_w.mp3",
+      "gb": "/sounds/phonemes/gb_w.mp3",
+      "in": "/sounds/phonemes/in_w.mp3"
+    },
+    "words": [
+      {
+        "word": "web",
+        "emoji": "\ud83d\udd78\ufe0f",
+        "emojiName": "spider web",
+        "audio": {
+          "us": "/sounds/us_w_web.mp3",
+          "uk": "/sounds/gb_w_web.mp3",
+          "in": "/sounds/in_w_web.mp3"
+        },
+        "image": "/images/words/web.png"
+      },
+      {
+        "word": "win",
+        "emoji": "\ud83c\udfc6",
+        "emojiName": "trophy",
+        "audio": {
+          "us": "/sounds/us_w_win.mp3",
+          "uk": "/sounds/gb_w_win.mp3",
+          "in": "/sounds/in_w_win.mp3"
+        },
+        "image": "/images/words/win.png"
+      },
+      {
+        "word": "wag",
+        "emoji": "\ud83d\udc36",
+        "emojiName": "dog",
+        "audio": {
+          "us": "/sounds/us_w_wag.mp3",
+          "uk": "/sounds/gb_w_wag.mp3",
+          "in": "/sounds/in_w_wag.mp3"
+        },
+        "image": "/images/words/wag.png"
+      }
+    ],
+    "description": "The /w/ sound as in 'web'",
+    "mouthImage": "/images/mouth/w.png"
+  },
+  {
+    "id": "17",
+    "phoneme": "/z/",
+    "grapheme": "z, zz, s, ss, x, ze, se",
+    "audio": {
+      "us": "/sounds/phonemes/us_z.mp3",
+      "gb": "/sounds/phonemes/gb_z.mp3",
+      "in": "/sounds/phonemes/in_z.mp3"
+    },
+    "words": [
+      {
+        "word": "zip",
+        "emoji": "\ud83e\uddf7",
+        "emojiName": "safety pin",
+        "audio": {
+          "us": "/sounds/us_z_zip.mp3",
+          "uk": "/sounds/gb_z_zip.mp3",
+          "in": "/sounds/in_z_zip.mp3"
+        },
+        "image": "/images/words/zip.png"
+      },
+      {
+        "word": "zoo",
+        "emoji": "\ud83e\udd81",
+        "emojiName": "lion",
+        "audio": {
+          "us": "/sounds/us_z_zoo.mp3",
+          "uk": "/sounds/gb_z_zoo.mp3",
+          "in": "/sounds/in_z_zoo.mp3"
+        },
+        "image": "/images/words/zoo.png"
+      },
+      {
+        "word": "zap",
+        "emoji": "\u26a1",
+        "emojiName": "high voltage",
+        "audio": {
+          "us": "/sounds/us_z_zap.mp3",
+          "uk": "/sounds/gb_z_zap.mp3",
+          "in": "/sounds/in_z_zap.mp3"
+        },
+        "image": "/images/words/zap.png"
+      }
+    ],
+    "description": "The /z/ sound as in 'zip'",
+    "mouthImage": "/images/mouth/z.png"
+  },
+  {
+    "id": "24",
+    "phoneme": "/j/",
+    "grapheme": "y, i, j",
+    "audio": {
+      "us": "/sounds/phonemes/us_j.mp3",
+      "gb": "/sounds/phonemes/gb_j.mp3",
+      "in": "/sounds/phonemes/in_j.mp3"
+    },
+    "words": [
+      {
+        "word": "yes",
+        "emoji": "\ud83d\udc4d",
+        "emojiName": "thumbs up",
+        "audio": {
+          "us": "/sounds/us_y_yes.mp3",
+          "uk": "/sounds/gb_y_yes.mp3",
+          "in": "/sounds/in_y_yes.mp3"
+        },
+        "image": "/images/words/yes.png"
+      },
+      {
+        "word": "yell",
+        "emoji": "\ud83d\udce3",
+        "emojiName": "megaphone",
+        "audio": {
+          "us": "/sounds/us_y_yell.mp3",
+          "uk": "/sounds/gb_y_yell.mp3",
+          "in": "/sounds/in_y_yell.mp3"
+        },
+        "image": "/images/words/yell.png"
+      },
+      {
+        "word": "yum",
+        "emoji": "\ud83d\ude0b",
+        "emojiName": "face savoring food",
+        "audio": {
+          "us": "/sounds/us_y_yum.mp3",
+          "uk": "/sounds/gb_y_yum.mp3",
+          "in": "/sounds/in_y_yum.mp3"
+        },
+        "image": "/images/words/yum.png"
+      }
+    ],
+    "description": "The /j/ sound as in 'yes'",
+    "mouthImage": "/images/mouth/j.png"
+  }
+]
