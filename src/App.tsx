@@ -7,6 +7,7 @@ import ParentDashboard from './pages/ParentDashboard';
 import OnboardingScreen from './pages/OnboardingScreen';
 import UnitLoader from "./pages/UnitLoader";
 import UnitPlayer from "./pages/UnitPlayer";
+import PhonemePlayer from './components/players/PhonemePlayer';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/dashboard" element={<ParentDashboard />} />
           <Route path="/units" element={<UnitLoader />} />
           <Route path="/unit/:unitId" element={<UnitPlayer />} />
+          <Route path="/phonemes" element={<PhonemePlayer />}  />
         </Routes>
       </motion.div>
     </Router>

@@ -12,8 +12,7 @@
           "us": "/sounds/us_b_bat.mp3",
           "uk": "/sounds/gb_b_bat.mp3",
           "in": "/sounds/in_b_bat.mp3"
-        },
-        "image": "/images/words/bat.png"
+        }
       },
       {
         "word": "bug",
@@ -23,8 +22,7 @@
           "us": "/sounds/us_b_bug.mp3",
           "uk": "/sounds/gb_b_bug.mp3",
           "in": "/sounds/in_b_bug.mp3"
-        },
-        "image": "/images/words/bug.png"
+        }
       },
       {
         "word": "bun",
@@ -34,12 +32,9 @@
           "us": "/sounds/us_b_bun.mp3",
           "uk": "/sounds/gb_b_bun.mp3",
           "in": "/sounds/in_b_bun.mp3"
-        },
-        "image": "/images/words/bun.png"
+        }
       }
-    ],
-    "description": "The /b/ sound as in 'bat'",
-    "mouthImage": "/images/mouth/b.png"
+    ]
   },
   {
     "id": "2",
@@ -54,8 +49,7 @@
           "us": "/sounds/us_d_dog.mp3",
           "uk": "/sounds/gb_d_dog.mp3",
           "in": "/sounds/in_d_dog.mp3"
-        },
-        "image": "/images/words/dog.png"
+        }
       },
       {
         "word": "dad",
@@ -65,8 +59,7 @@
           "us": "/sounds/us_d_dad.mp3",
           "uk": "/sounds/gb_d_dad.mp3",
           "in": "/sounds/in_d_dad.mp3"
-        },
-        "image": "/images/words/dad.png"
+        }
       },
       {
         "word": "dot",
@@ -76,12 +69,9 @@
           "us": "/sounds/us_d_dot.mp3",
           "uk": "/sounds/gb_d_dot.mp3",
           "in": "/sounds/in_d_dot.mp3"
-        },
-        "image": "/images/words/dot.png"
+        }
       }
-    ],
-    "description": "The /d/ sound as in 'dog'",
-    "mouthImage": "/images/mouth/d.png"
+    ]
   },
   {
     "id": "3",
@@ -96,8 +86,7 @@
           "us": "/sounds/us_f_fan.mp3",
           "uk": "/sounds/gb_f_fan.mp3",
           "in": "/sounds/in_f_fan.mp3"
-        },
-        "image": "/images/words/fan.png"
+        }
       },
       {
         "word": "fun",
@@ -107,8 +96,7 @@
           "us": "/sounds/us_f_fun.mp3",
           "uk": "/sounds/gb_f_fun.mp3",
           "in": "/sounds/in_f_fun.mp3"
-        },
-        "image": "/images/words/fun.png"
+        }
       },
       {
         "word": "fig",
@@ -118,12 +106,9 @@
           "us": "/sounds/us_f_fig.mp3",
           "uk": "/sounds/gb_f_fig.mp3",
           "in": "/sounds/in_f_fig.mp3"
-        },
-        "image": "/images/words/fig.png"
+        }
       }
-    ],
-    "description": "The /f/ sound as in 'fan'",
-    "mouthImage": "/images/mouth/f.png"
+    ]
   },
   {
     "id": "4",
@@ -138,8 +123,7 @@
           "us": "/sounds/us_g_gum.mp3",
           "uk": "/sounds/gb_g_gum.mp3",
           "in": "/sounds/in_g_gum.mp3"
-        },
-        "image": "/images/words/gum.png"
+        }
       },
       {
         "word": "gap",
@@ -149,8 +133,7 @@
           "us": "/sounds/us_g_gap.mp3",
           "uk": "/sounds/gb_g_gap.mp3",
           "in": "/sounds/in_g_gap.mp3"
-        },
-        "image": "/images/words/gap.png"
+        }
       },
       {
         "word": "gas",
@@ -160,12 +143,9 @@
           "us": "/sounds/us_g_gas.mp3",
           "uk": "/sounds/gb_g_gas.mp3",
           "in": "/sounds/in_g_gas.mp3"
-        },
-        "image": "/images/words/gas.png"
+        }
       }
-    ],
-    "description": "The /g/ sound as in 'gum'",
-    "mouthImage": "/images/mouth/g.png"
+    ]
   },
   {
     "id": "5",
@@ -180,8 +160,7 @@
           "us": "/sounds/us_h_hat.mp3",
           "uk": "/sounds/gb_h_hat.mp3",
           "in": "/sounds/in_h_hat.mp3"
-        },
-        "image": "/images/words/hat.png"
+        }
       },
       {
         "word": "hop",
@@ -191,8 +170,7 @@
           "us": "/sounds/us_h_hop.mp3",
           "uk": "/sounds/gb_h_hop.mp3",
           "in": "/sounds/in_h_hop.mp3"
-        },
-        "image": "/images/words/hop.png"
+        }
       },
       {
         "word": "hug",
@@ -202,12 +180,9 @@
           "us": "/sounds/us_h_hug.mp3",
           "uk": "/sounds/gb_h_hug.mp3",
           "in": "/sounds/in_h_hug.mp3"
-        },
-        "image": "/images/words/hug.png"
+        }
       }
-    ],
-    "description": "The /h/ sound as in 'hat'",
-    "mouthImage": "/images/mouth/h.png"
+    ]
   },
   {
     "id": "6",
@@ -222,8 +197,7 @@
           "us": "/sounds/us_j_jam.mp3",
           "uk": "/sounds/gb_j_jam.mp3",
           "in": "/sounds/in_j_jam.mp3"
-        },
-        "image": "/images/words/jam.png"
+        }
       },
       {
         "word": "jet",
@@ -233,8 +207,7 @@
           "us": "/sounds/us_j_jet.mp3",
           "uk": "/sounds/gb_j_jet.mp3",
           "in": "/sounds/in_j_jet.mp3"
-        },
-        "image": "/images/words/jet.png"
+        }
       },
       {
         "word": "jug",
@@ -244,12 +217,9 @@
           "us": "/sounds/us_j_jug.mp3",
           "uk": "/sounds/gb_j_jug.mp3",
           "in": "/sounds/in_j_jug.mp3"
-        },
-        "image": "/images/words/jug.png"
+        }
       }
-    ],
-    "description": "The /dʒ/ sound as in 'jam'",
-    "mouthImage": "/images/mouth/dʒ.png"
+    ]
   },
   {
     "id": "7",
@@ -264,8 +234,7 @@
           "us": "/sounds/us_k_cat.mp3",
           "uk": "/sounds/gb_k_cat.mp3",
           "in": "/sounds/in_k_cat.mp3"
-        },
-        "image": "/images/words/cat.png"
+        }
       },
       {
         "word": "kit",
@@ -275,8 +244,7 @@
           "us": "/sounds/us_k_kit.mp3",
           "uk": "/sounds/gb_k_kit.mp3",
           "in": "/sounds/in_k_kit.mp3"
-        },
-        "image": "/images/words/kit.png"
+        }
       },
       {
         "word": "cup",
@@ -286,12 +254,9 @@
           "us": "/sounds/us_k_cup.mp3",
           "uk": "/sounds/gb_k_cup.mp3",
           "in": "/sounds/in_k_cup.mp3"
-        },
-        "image": "/images/words/cup.png"
+        }
       }
-    ],
-    "description": "The /k/ sound as in 'cat'",
-    "mouthImage": "/images/mouth/k.png"
+    ]
   },
   {
     "id": "8",
@@ -306,8 +271,7 @@
           "us": "/sounds/us_l_leg.mp3",
           "uk": "/sounds/gb_l_leg.mp3",
           "in": "/sounds/in_l_leg.mp3"
-        },
-        "image": "/images/words/leg.png"
+        }
       },
       {
         "word": "log",
@@ -317,8 +281,7 @@
           "us": "/sounds/us_l_log.mp3",
           "uk": "/sounds/gb_l_log.mp3",
           "in": "/sounds/in_l_log.mp3"
-        },
-        "image": "/images/words/log.png"
+        }
       },
       {
         "word": "lip",
@@ -328,12 +291,9 @@
           "us": "/sounds/us_l_lip.mp3",
           "uk": "/sounds/gb_l_lip.mp3",
           "in": "/sounds/in_l_lip.mp3"
-        },
-        "image": "/images/words/lip.png"
+        }
       }
-    ],
-    "description": "The /l/ sound as in 'leg'",
-    "mouthImage": "/images/mouth/l.png"
+    ]
   },
   {
     "id": "9",
@@ -348,8 +308,7 @@
           "us": "/sounds/us_m_mat.mp3",
           "uk": "/sounds/gb_m_mat.mp3",
           "in": "/sounds/in_m_mat.mp3"
-        },
-        "image": "/images/words/mat.png"
+        }
       },
       {
         "word": "mug",
@@ -359,8 +318,7 @@
           "us": "/sounds/us_m_mug.mp3",
           "uk": "/sounds/gb_m_mug.mp3",
           "in": "/sounds/in_m_mug.mp3"
-        },
-        "image": "/images/words/mug.png"
+        }
       },
       {
         "word": "man",
@@ -370,12 +328,9 @@
           "us": "/sounds/us_m_man.mp3",
           "uk": "/sounds/gb_m_man.mp3",
           "in": "/sounds/in_m_man.mp3"
-        },
-        "image": "/images/words/man.png"
+        }
       }
-    ],
-    "description": "The /m/ sound as in 'mat'",
-    "mouthImage": "/images/mouth/m.png"
+    ]
   },
   {
     "id": "10",
@@ -390,8 +345,7 @@
           "us": "/sounds/us_n_net.mp3",
           "uk": "/sounds/gb_n_net.mp3",
           "in": "/sounds/in_n_net.mp3"
-        },
-        "image": "/images/words/net.png"
+        }
       },
       {
         "word": "nap",
@@ -401,8 +355,7 @@
           "us": "/sounds/us_n_nap.mp3",
           "uk": "/sounds/gb_n_nap.mp3",
           "in": "/sounds/in_n_nap.mp3"
-        },
-        "image": "/images/words/nap.png"
+        }
       },
       {
         "word": "nut",
@@ -412,12 +365,9 @@
           "us": "/sounds/us_n_nut.mp3",
           "uk": "/sounds/gb_n_nut.mp3",
           "in": "/sounds/in_n_nut.mp3"
-        },
-        "image": "/images/words/nut.png"
+        }
       }
-    ],
-    "description": "The /n/ sound as in 'net'",
-    "mouthImage": "/images/mouth/n.png"
+    ]
   },
   {
     "id": "11",
@@ -432,8 +382,7 @@
           "us": "/sounds/us_p_pin.mp3",
           "uk": "/sounds/gb_p_pin.mp3",
           "in": "/sounds/in_p_pin.mp3"
-        },
-        "image": "/images/words/pin.png"
+        }
       },
       {
         "word": "pot",
@@ -443,8 +392,7 @@
           "us": "/sounds/us_p_pot.mp3",
           "uk": "/sounds/gb_p_pot.mp3",
           "in": "/sounds/in_p_pot.mp3"
-        },
-        "image": "/images/words/pot.png"
+        }
       },
       {
         "word": "pan",
@@ -454,12 +402,9 @@
           "us": "/sounds/us_p_pan.mp3",
           "uk": "/sounds/gb_p_pan.mp3",
           "in": "/sounds/in_p_pan.mp3"
-        },
-        "image": "/images/words/pan.png"
+        }
       }
-    ],
-    "description": "The /p/ sound as in 'pin'",
-    "mouthImage": "/images/mouth/p.png"
+    ]
   },
   {
     "id": "12",
@@ -474,8 +419,7 @@
           "us": "/sounds/us_r_rat.mp3",
           "uk": "/sounds/gb_r_rat.mp3",
           "in": "/sounds/in_r_rat.mp3"
-        },
-        "image": "/images/words/rat.png"
+        }
       },
       {
         "word": "run",
@@ -485,8 +429,7 @@
           "us": "/sounds/us_r_run.mp3",
           "uk": "/sounds/gb_r_run.mp3",
           "in": "/sounds/in_r_run.mp3"
-        },
-        "image": "/images/words/run.png"
+        }
       },
       {
         "word": "red",
@@ -496,12 +439,9 @@
           "us": "/sounds/us_r_red.mp3",
           "uk": "/sounds/gb_r_red.mp3",
           "in": "/sounds/in_r_red.mp3"
-        },
-        "image": "/images/words/red.png"
+        }
       }
-    ],
-    "description": "The /r/ sound as in 'rat'",
-    "mouthImage": "/images/mouth/r.png"
+    ]
   },
   {
     "id": "13",
@@ -516,8 +456,7 @@
           "us": "/sounds/us_s_sun.mp3",
           "uk": "/sounds/gb_s_sun.mp3",
           "in": "/sounds/in_s_sun.mp3"
-        },
-        "image": "/images/words/sun.png"
+        }
       },
       {
         "word": "sit",
@@ -527,8 +466,7 @@
           "us": "/sounds/us_s_sit.mp3",
           "uk": "/sounds/gb_s_sit.mp3",
           "in": "/sounds/in_s_sit.mp3"
-        },
-        "image": "/images/words/sit.png"
+        }
       },
       {
         "word": "sock",
@@ -538,12 +476,9 @@
           "us": "/sounds/us_s_sock.mp3",
           "uk": "/sounds/gb_s_sock.mp3",
           "in": "/sounds/in_s_sock.mp3"
-        },
-        "image": "/images/words/sock.png"
+        }
       }
-    ],
-    "description": "The /s/ sound as in 'sun'",
-    "mouthImage": "/images/mouth/s.png"
+    ]
   },
   {
     "id": "14",
@@ -558,8 +493,7 @@
           "us": "/sounds/us_t_top.mp3",
           "uk": "/sounds/gb_t_top.mp3",
           "in": "/sounds/in_t_top.mp3"
-        },
-        "image": "/images/words/top.png"
+        }
       },
       {
         "word": "tap",
@@ -569,8 +503,7 @@
           "us": "/sounds/us_t_tap.mp3",
           "uk": "/sounds/gb_t_tap.mp3",
           "in": "/sounds/in_t_tap.mp3"
-        },
-        "image": "/images/words/tap.png"
+        }
       },
       {
         "word": "tip",
@@ -580,12 +513,9 @@
           "us": "/sounds/us_t_tip.mp3",
           "uk": "/sounds/gb_t_tip.mp3",
           "in": "/sounds/in_t_tip.mp3"
-        },
-        "image": "/images/words/tip.png"
+        }
       }
-    ],
-    "description": "The /t/ sound as in 'top'",
-    "mouthImage": "/images/mouth/t.png"
+    ]
   },
   {
     "id": "15",
@@ -600,8 +530,7 @@
           "us": "/sounds/us_v_van.mp3",
           "uk": "/sounds/gb_v_van.mp3",
           "in": "/sounds/in_v_van.mp3"
-        },
-        "image": "/images/words/van.png"
+        }
       },
       {
         "word": "vet",
@@ -611,8 +540,7 @@
           "us": "/sounds/us_v_vet.mp3",
           "uk": "/sounds/gb_v_vet.mp3",
           "in": "/sounds/in_v_vet.mp3"
-        },
-        "image": "/images/words/vet.png"
+        }
       },
       {
         "word": "vine",
@@ -622,12 +550,9 @@
           "us": "/sounds/us_v_vine.mp3",
           "uk": "/sounds/gb_v_vine.mp3",
           "in": "/sounds/in_v_vine.mp3"
-        },
-        "image": "/images/words/vine.png"
+        }
       }
-    ],
-    "description": "The /v/ sound as in 'van'",
-    "mouthImage": "/images/mouth/v.png"
+    ]
   },
   {
     "id": "16",
@@ -642,8 +567,7 @@
           "us": "/sounds/us_w_web.mp3",
           "uk": "/sounds/gb_w_web.mp3",
           "in": "/sounds/in_w_web.mp3"
-        },
-        "image": "/images/words/web.png"
+        }
       },
       {
         "word": "win",
@@ -653,8 +577,7 @@
           "us": "/sounds/us_w_win.mp3",
           "uk": "/sounds/gb_w_win.mp3",
           "in": "/sounds/in_w_win.mp3"
-        },
-        "image": "/images/words/win.png"
+        }
       },
       {
         "word": "wag",
@@ -664,12 +587,9 @@
           "us": "/sounds/us_w_wag.mp3",
           "uk": "/sounds/gb_w_wag.mp3",
           "in": "/sounds/in_w_wag.mp3"
-        },
-        "image": "/images/words/wag.png"
+        }
       }
-    ],
-    "description": "The /w/ sound as in 'web'",
-    "mouthImage": "/images/mouth/w.png"
+    ]
   },
   {
     "id": "17",
@@ -684,8 +604,7 @@
           "us": "/sounds/us_z_zip.mp3",
           "uk": "/sounds/gb_z_zip.mp3",
           "in": "/sounds/in_z_zip.mp3"
-        },
-        "image": "/images/words/zip.png"
+        }
       },
       {
         "word": "zoo",
@@ -695,8 +614,7 @@
           "us": "/sounds/us_z_zoo.mp3",
           "uk": "/sounds/gb_z_zoo.mp3",
           "in": "/sounds/in_z_zoo.mp3"
-        },
-        "image": "/images/words/zoo.png"
+        }
       },
       {
         "word": "zap",
@@ -706,12 +624,9 @@
           "us": "/sounds/us_z_zap.mp3",
           "uk": "/sounds/gb_z_zap.mp3",
           "in": "/sounds/in_z_zap.mp3"
-        },
-        "image": "/images/words/zap.png"
+        }
       }
-    ],
-    "description": "The /z/ sound as in 'zip'",
-    "mouthImage": "/images/mouth/z.png"
+    ]
   },
   {
     "id": "18",
@@ -726,8 +641,7 @@
           "us": "/sounds/us_zh_beige.mp3",
           "uk": "/sounds/gb_zh_beige.mp3",
           "in": "/sounds/in_zh_beige.mp3"
-        },
-        "image": "/images/words/beige.png"
+        }
       },
       {
         "word": "vision",
@@ -737,8 +651,7 @@
           "us": "/sounds/us_zh_vision.mp3",
           "uk": "/sounds/gb_zh_vision.mp3",
           "in": "/sounds/in_zh_vision.mp3"
-        },
-        "image": "/images/words/vision.png"
+        }
       },
       {
         "word": "genre",
@@ -748,12 +661,9 @@
           "us": "/sounds/us_zh_genre.mp3",
           "uk": "/sounds/gb_zh_genre.mp3",
           "in": "/sounds/in_zh_genre.mp3"
-        },
-        "image": "/images/words/genre.png"
+        }
       }
-    ],
-    "description": "The /ʒ/ sound as in 'beige'",
-    "mouthImage": "/images/mouth/ʒ.png"
+    ]
   },
   {
     "id": "19",
@@ -768,8 +678,7 @@
           "us": "/sounds/us_ch_chat.mp3",
           "uk": "/sounds/gb_ch_chat.mp3",
           "in": "/sounds/in_ch_chat.mp3"
-        },
-        "image": "/images/words/chat.png"
+        }
       },
       {
         "word": "chip",
@@ -779,8 +688,7 @@
           "us": "/sounds/us_ch_chip.mp3",
           "uk": "/sounds/gb_ch_chip.mp3",
           "in": "/sounds/in_ch_chip.mp3"
-        },
-        "image": "/images/words/chip.png"
+        }
       },
       {
         "word": "chin",
@@ -790,12 +698,9 @@
           "us": "/sounds/us_ch_chin.mp3",
           "uk": "/sounds/gb_ch_chin.mp3",
           "in": "/sounds/in_ch_chin.mp3"
-        },
-        "image": "/images/words/chin.png"
+        }
       }
-    ],
-    "description": "The /tʃ/ sound as in 'chat'",
-    "mouthImage": "/images/mouth/tʃ.png"
+    ]
   },
   {
     "id": "20",
@@ -810,8 +715,7 @@
           "us": "/sounds/us_sh_ship.mp3",
           "uk": "/sounds/gb_sh_ship.mp3",
           "in": "/sounds/in_sh_ship.mp3"
-        },
-        "image": "/images/words/ship.png"
+        }
       },
       {
         "word": "shop",
@@ -821,8 +725,7 @@
           "us": "/sounds/us_sh_shop.mp3",
           "uk": "/sounds/gb_sh_shop.mp3",
           "in": "/sounds/in_sh_shop.mp3"
-        },
-        "image": "/images/words/shop.png"
+        }
       },
       {
         "word": "shut",
@@ -832,12 +735,9 @@
           "us": "/sounds/us_sh_shut.mp3",
           "uk": "/sounds/gb_sh_shut.mp3",
           "in": "/sounds/in_sh_shut.mp3"
-        },
-        "image": "/images/words/shut.png"
+        }
       }
-    ],
-    "description": "The /ʃ/ sound as in 'ship'",
-    "mouthImage": "/images/mouth/ʃ.png"
+    ]
   },
   {
     "id": "21",
@@ -852,8 +752,7 @@
           "us": "/sounds/us_th_thin.mp3",
           "uk": "/sounds/gb_th_thin.mp3",
           "in": "/sounds/in_th_thin.mp3"
-        },
-        "image": "/images/words/thin.png"
+        }
       },
       {
         "word": "thumb",
@@ -863,8 +762,7 @@
           "us": "/sounds/us_th_thumb.mp3",
           "uk": "/sounds/gb_th_thumb.mp3",
           "in": "/sounds/in_th_thumb.mp3"
-        },
-        "image": "/images/words/thumb.png"
+        }
       },
       {
         "word": "bath",
@@ -874,12 +772,9 @@
           "us": "/sounds/us_th_bath.mp3",
           "uk": "/sounds/gb_th_bath.mp3",
           "in": "/sounds/in_th_bath.mp3"
-        },
-        "image": "/images/words/bath.png"
+        }
       }
-    ],
-    "description": "The /θ/ sound as in 'thin'",
-    "mouthImage": "/images/mouth/θ.png"
+    ]
   },
   {
     "id": "22",
@@ -894,8 +789,7 @@
           "us": "/sounds/us_th_this.mp3",
           "uk": "/sounds/gb_th_this.mp3",
           "in": "/sounds/in_th_this.mp3"
-        },
-        "image": "/images/words/this.png"
+        }
       },
       {
         "word": "that",
@@ -905,8 +799,7 @@
           "us": "/sounds/us_th_that.mp3",
           "uk": "/sounds/gb_th_that.mp3",
           "in": "/sounds/in_th_that.mp3"
-        },
-        "image": "/images/words/that.png"
+        }
       },
       {
         "word": "them",
@@ -916,12 +809,9 @@
           "us": "/sounds/us_th_them.mp3",
           "uk": "/sounds/gb_th_them.mp3",
           "in": "/sounds/in_th_them.mp3"
-        },
-        "image": "/images/words/them.png"
+        }
       }
-    ],
-    "description": "The /ð/ sound as in 'this'",
-    "mouthImage": "/images/mouth/ð.png"
+    ]
   },
   {
     "id": "23",
@@ -936,8 +826,7 @@
           "us": "/sounds/us_ng_ring.mp3",
           "uk": "/sounds/gb_ng_ring.mp3",
           "in": "/sounds/in_ng_ring.mp3"
-        },
-        "image": "/images/words/ring.png"
+        }
       },
       {
         "word": "sing",
@@ -947,8 +836,7 @@
           "us": "/sounds/us_ng_sing.mp3",
           "uk": "/sounds/gb_ng_sing.mp3",
           "in": "/sounds/in_ng_sing.mp3"
-        },
-        "image": "/images/words/sing.png"
+        }
       },
       {
         "word": "bang",
@@ -958,12 +846,9 @@
           "us": "/sounds/us_ng_bang.mp3",
           "uk": "/sounds/gb_ng_bang.mp3",
           "in": "/sounds/in_ng_bang.mp3"
-        },
-        "image": "/images/words/bang.png"
+        }
       }
-    ],
-    "description": "The /ŋ/ sound as in 'ring'",
-    "mouthImage": "/images/mouth/ŋ.png"
+    ]
   },
   {
     "id": "24",
@@ -978,8 +863,7 @@
           "us": "/sounds/us_y_yes.mp3",
           "uk": "/sounds/gb_y_yes.mp3",
           "in": "/sounds/in_y_yes.mp3"
-        },
-        "image": "/images/words/yes.png"
+        }
       },
       {
         "word": "yell",
@@ -989,8 +873,7 @@
           "us": "/sounds/us_y_yell.mp3",
           "uk": "/sounds/gb_y_yell.mp3",
           "in": "/sounds/in_y_yell.mp3"
-        },
-        "image": "/images/words/yell.png"
+        }
       },
       {
         "word": "yum",
@@ -1000,12 +883,9 @@
           "us": "/sounds/us_y_yum.mp3",
           "uk": "/sounds/gb_y_yum.mp3",
           "in": "/sounds/in_y_yum.mp3"
-        },
-        "image": "/images/words/yum.png"
+        }
       }
-    ],
-    "description": "The /j/ sound as in 'yes'",
-    "mouthImage": "/images/mouth/j.png"
+    ]
   },
   {
     "id": "25",
@@ -1020,8 +900,7 @@
           "us": "/sounds/us_a_cat.mp3",
           "uk": "/sounds/gb_a_cat.mp3",
           "in": "/sounds/in_a_cat.mp3"
-        },
-        "image": "/images/words/cat.png"
+        }
       },
       {
         "word": "map",
@@ -1031,8 +910,7 @@
           "us": "/sounds/us_a_map.mp3",
           "uk": "/sounds/gb_a_map.mp3",
           "in": "/sounds/in_a_map.mp3"
-        },
-        "image": "/images/words/map.png"
+        }
       },
       {
         "word": "man",
@@ -1042,12 +920,9 @@
           "us": "/sounds/us_a_man.mp3",
           "uk": "/sounds/gb_a_man.mp3",
           "in": "/sounds/in_a_man.mp3"
-        },
-        "image": "/images/words/man.png"
+        }
       }
-    ],
-    "description": "The /æ/ sound as in 'cat'",
-    "mouthImage": "/images/mouth/æ.png"
+    ]
   },
   {
     "id": "26",
@@ -1062,8 +937,7 @@
           "us": "/sounds/us_a_cake.mp3",
           "uk": "/sounds/gb_a_cake.mp3",
           "in": "/sounds/in_a_cake.mp3"
-        },
-        "image": "/images/words/cake.png"
+        }
       },
       {
         "word": "name",
@@ -1073,8 +947,7 @@
           "us": "/sounds/us_a_name.mp3",
           "uk": "/sounds/gb_a_name.mp3",
           "in": "/sounds/in_a_name.mp3"
-        },
-        "image": "/images/words/name.png"
+        }
       },
       {
         "word": "rain",
@@ -1084,12 +957,9 @@
           "us": "/sounds/us_a_rain.mp3",
           "uk": "/sounds/gb_a_rain.mp3",
           "in": "/sounds/in_a_rain.mp3"
-        },
-        "image": "/images/words/rain.png"
+        }
       }
-    ],
-    "description": "The /eɪ/ sound as in 'cake'",
-    "mouthImage": "/images/mouth/eɪ.png"
+    ]
   },
   {
     "id": "27",
@@ -1104,8 +974,7 @@
           "us": "/sounds/us_e_bed.mp3",
           "uk": "/sounds/gb_e_bed.mp3",
           "in": "/sounds/in_e_bed.mp3"
-        },
-        "image": "/images/words/bed.png"
+        }
       },
       {
         "word": "pen",
@@ -1115,8 +984,7 @@
           "us": "/sounds/us_e_pen.mp3",
           "uk": "/sounds/gb_e_pen.mp3",
           "in": "/sounds/in_e_pen.mp3"
-        },
-        "image": "/images/words/pen.png"
+        }
       },
       {
         "word": "leg",
@@ -1126,12 +994,9 @@
           "us": "/sounds/us_e_leg.mp3",
           "uk": "/sounds/gb_e_leg.mp3",
           "in": "/sounds/in_e_leg.mp3"
-        },
-        "image": "/images/words/leg.png"
+        }
       }
-    ],
-    "description": "The /ɛ/ sound as in 'bed'",
-    "mouthImage": "/images/mouth/ɛ.png"
+    ]
   },
   {
     "id": "28",
@@ -1146,8 +1011,7 @@
           "us": "/sounds/us_e_bee.mp3",
           "uk": "/sounds/gb_e_bee.mp3",
           "in": "/sounds/in_e_bee.mp3"
-        },
-        "image": "/images/words/bee.png"
+        }
       },
       {
         "word": "see",
@@ -1157,8 +1021,7 @@
           "us": "/sounds/us_e_see.mp3",
           "uk": "/sounds/gb_e_see.mp3",
           "in": "/sounds/in_e_see.mp3"
-        },
-        "image": "/images/words/see.png"
+        }
       },
       {
         "word": "feet",
@@ -1168,12 +1031,9 @@
           "us": "/sounds/us_e_feet.mp3",
           "uk": "/sounds/gb_e_feet.mp3",
           "in": "/sounds/in_e_feet.mp3"
-        },
-        "image": "/images/words/feet.png"
+        }
       }
-    ],
-    "description": "The /i:/ sound as in 'bee'",
-    "mouthImage": "/images/mouth/i:.png"
+    ]
   },
   {
     "id": "29",
@@ -1188,8 +1048,7 @@
           "us": "/sounds/us_i_sit.mp3",
           "uk": "/sounds/gb_i_sit.mp3",
           "in": "/sounds/in_i_sit.mp3"
-        },
-        "image": "/images/words/sit.png"
+        }
       },
       {
         "word": "pig",
@@ -1199,8 +1058,7 @@
           "us": "/sounds/us_i_pig.mp3",
           "uk": "/sounds/gb_i_pig.mp3",
           "in": "/sounds/in_i_pig.mp3"
-        },
-        "image": "/images/words/pig.png"
+        }
       },
       {
         "word": "win",
@@ -1210,12 +1068,9 @@
           "us": "/sounds/us_i_win.mp3",
           "uk": "/sounds/gb_i_win.mp3",
           "in": "/sounds/in_i_win.mp3"
-        },
-        "image": "/images/words/win.png"
+        }
       }
-    ],
-    "description": "The /ɪ/ sound as in 'sit'",
-    "mouthImage": "/images/mouth/ɪ.png"
+    ]
   },
   {
     "id": "30",
@@ -1230,8 +1085,7 @@
           "us": "/sounds/us_i_kite.mp3",
           "uk": "/sounds/gb_i_kite.mp3",
           "in": "/sounds/in_i_kite.mp3"
-        },
-        "image": "/images/words/kite.png"
+        }
       },
       {
         "word": "pie",
@@ -1241,8 +1095,7 @@
           "us": "/sounds/us_i_pie.mp3",
           "uk": "/sounds/gb_i_pie.mp3",
           "in": "/sounds/in_i_pie.mp3"
-        },
-        "image": "/images/words/pie.png"
+        }
       },
       {
         "word": "bike",
@@ -1252,12 +1105,9 @@
           "us": "/sounds/us_i_bike.mp3",
           "uk": "/sounds/gb_i_bike.mp3",
           "in": "/sounds/in_i_bike.mp3"
-        },
-        "image": "/images/words/bike.png"
+        }
       }
-    ],
-    "description": "The /aɪ/ sound as in 'kite'",
-    "mouthImage": "/images/mouth/aɪ.png"
+    ]
   },
   {
     "id": "31",
@@ -1272,8 +1122,7 @@
           "us": "/sounds/us_o_dog.mp3",
           "uk": "/sounds/gb_o_dog.mp3",
           "in": "/sounds/in_o_dog.mp3"
-        },
-        "image": "/images/words/dog.png"
+        }
       },
       {
         "word": "pot",
@@ -1283,8 +1132,7 @@
           "us": "/sounds/us_o_pot.mp3",
           "uk": "/sounds/gb_o_pot.mp3",
           "in": "/sounds/in_o_pot.mp3"
-        },
-        "image": "/images/words/pot.png"
+        }
       },
       {
         "word": "log",
@@ -1294,12 +1142,9 @@
           "us": "/sounds/us_o_log.mp3",
           "uk": "/sounds/gb_o_log.mp3",
           "in": "/sounds/in_o_log.mp3"
-        },
-        "image": "/images/words/log.png"
+        }
       }
-    ],
-    "description": "The /ɒ/ sound as in 'dog'",
-    "mouthImage": "/images/mouth/ɒ.png"
+    ]
   },
   {
     "id": "32",
@@ -1314,8 +1159,7 @@
           "us": "/sounds/us_o_go.mp3",
           "uk": "/sounds/gb_o_go.mp3",
           "in": "/sounds/in_o_go.mp3"
-        },
-        "image": "/images/words/go.png"
+        }
       },
       {
         "word": "boat",
@@ -1325,8 +1169,7 @@
           "us": "/sounds/us_o_boat.mp3",
           "uk": "/sounds/gb_o_boat.mp3",
           "in": "/sounds/in_o_boat.mp3"
-        },
-        "image": "/images/words/boat.png"
+        }
       },
       {
         "word": "nose",
@@ -1336,12 +1179,9 @@
           "us": "/sounds/us_o_nose.mp3",
           "uk": "/sounds/gb_o_nose.mp3",
           "in": "/sounds/in_o_nose.mp3"
-        },
-        "image": "/images/words/nose.png"
+        }
       }
-    ],
-    "description": "The /oʊ/ sound as in 'go'",
-    "mouthImage": "/images/mouth/oʊ.png"
+    ]
   },
   {
     "id": "33",
@@ -1356,8 +1196,7 @@
           "us": "/sounds/us_u_book.mp3",
           "uk": "/sounds/gb_u_book.mp3",
           "in": "/sounds/in_u_book.mp3"
-        },
-        "image": "/images/words/book.png"
+        }
       },
       {
         "word": "foot",
@@ -1367,8 +1206,7 @@
           "us": "/sounds/us_u_foot.mp3",
           "uk": "/sounds/gb_u_foot.mp3",
           "in": "/sounds/in_u_foot.mp3"
-        },
-        "image": "/images/words/foot.png"
+        }
       },
       {
         "word": "cook",
@@ -1378,12 +1216,9 @@
           "us": "/sounds/us_u_cook.mp3",
           "uk": "/sounds/gb_u_cook.mp3",
           "in": "/sounds/in_u_cook.mp3"
-        },
-        "image": "/images/words/cook.png"
+        }
       }
-    ],
-    "description": "The /ʊ/ sound as in 'book'",
-    "mouthImage": "/images/mouth/ʊ.png"
+    ]
   },
   {
     "id": "34",
@@ -1398,8 +1233,7 @@
           "us": "/sounds/us_u_cup.mp3",
           "uk": "/sounds/gb_u_cup.mp3",
           "in": "/sounds/in_u_cup.mp3"
-        },
-        "image": "/images/words/cup.png"
+        }
       },
       {
         "word": "mud",
@@ -1409,8 +1243,7 @@
           "us": "/sounds/us_u_mud.mp3",
           "uk": "/sounds/gb_u_mud.mp3",
           "in": "/sounds/in_u_mud.mp3"
-        },
-        "image": "/images/words/mud.png"
+        }
       },
       {
         "word": "sun",
@@ -1420,12 +1253,9 @@
           "us": "/sounds/us_u_sun.mp3",
           "uk": "/sounds/gb_u_sun.mp3",
           "in": "/sounds/in_u_sun.mp3"
-        },
-        "image": "/images/words/sun.png"
+        }
       }
-    ],
-    "description": "The /ʌ/ sound as in 'cup'",
-    "mouthImage": "/images/mouth/ʌ.png"
+    ]
   },
   {
     "id": "35",
@@ -1440,8 +1270,7 @@
           "us": "/sounds/us_u_moon.mp3",
           "uk": "/sounds/gb_u_moon.mp3",
           "in": "/sounds/in_u_moon.mp3"
-        },
-        "image": "/images/words/moon.png"
+        }
       },
       {
         "word": "blue",
@@ -1451,8 +1280,7 @@
           "us": "/sounds/us_u_blue.mp3",
           "uk": "/sounds/gb_u_blue.mp3",
           "in": "/sounds/in_u_blue.mp3"
-        },
-        "image": "/images/words/blue.png"
+        }
       },
       {
         "word": "shoe",
@@ -1462,12 +1290,9 @@
           "us": "/sounds/us_u_shoe.mp3",
           "uk": "/sounds/gb_u_shoe.mp3",
           "in": "/sounds/in_u_shoe.mp3"
-        },
-        "image": "/images/words/shoe.png"
+        }
       }
-    ],
-    "description": "The /u:/ sound as in 'moon'",
-    "mouthImage": "/images/mouth/u:.png"
+    ]
   },
   {
     "id": "36",
@@ -1482,8 +1307,7 @@
           "us": "/sounds/us_oi_boy.mp3",
           "uk": "/sounds/gb_oi_boy.mp3",
           "in": "/sounds/in_oi_boy.mp3"
-        },
-        "image": "/images/words/boy.png"
+        }
       },
       {
         "word": "coin",
@@ -1493,8 +1317,7 @@
           "us": "/sounds/us_oi_coin.mp3",
           "uk": "/sounds/gb_oi_coin.mp3",
           "in": "/sounds/in_oi_coin.mp3"
-        },
-        "image": "/images/words/coin.png"
+        }
       },
       {
         "word": "toy",
@@ -1504,12 +1327,9 @@
           "us": "/sounds/us_oi_toy.mp3",
           "uk": "/sounds/gb_oi_toy.mp3",
           "in": "/sounds/in_oi_toy.mp3"
-        },
-        "image": "/images/words/toy.png"
+        }
       }
-    ],
-    "description": "The /ɔɪ/ sound as in 'boy'",
-    "mouthImage": "/images/mouth/ɔɪ.png"
+    ]
   },
   {
     "id": "37",
@@ -1524,8 +1344,7 @@
           "us": "/sounds/us_ow_cow.mp3",
           "uk": "/sounds/gb_ow_cow.mp3",
           "in": "/sounds/in_ow_cow.mp3"
-        },
-        "image": "/images/words/cow.png"
+        }
       },
       {
         "word": "house",
@@ -1535,8 +1354,7 @@
           "us": "/sounds/us_ow_house.mp3",
           "uk": "/sounds/gb_ow_house.mp3",
           "in": "/sounds/in_ow_house.mp3"
-        },
-        "image": "/images/words/house.png"
+        }
       },
       {
         "word": "mouse",
@@ -1546,12 +1364,9 @@
           "us": "/sounds/us_ow_mouse.mp3",
           "uk": "/sounds/gb_ow_mouse.mp3",
           "in": "/sounds/in_ow_mouse.mp3"
-        },
-        "image": "/images/words/mouse.png"
+        }
       }
-    ],
-    "description": "The /aʊ/ sound as in 'cow'",
-    "mouthImage": "/images/mouth/aʊ.png"
+    ]
   },
   {
     "id": "38",
@@ -1566,8 +1381,7 @@
           "us": "/sounds/us_schwa_sofa.mp3",
           "uk": "/sounds/gb_schwa_sofa.mp3",
           "in": "/sounds/in_schwa_sofa.mp3"
-        },
-        "image": "/images/words/sofa.png"
+        }
       },
       {
         "word": "panda",
@@ -1577,8 +1391,7 @@
           "us": "/sounds/us_schwa_panda.mp3",
           "uk": "/sounds/gb_schwa_panda.mp3",
           "in": "/sounds/in_schwa_panda.mp3"
-        },
-        "image": "/images/words/panda.png"
+        }
       },
       {
         "word": "pencil",
@@ -1588,12 +1401,9 @@
           "us": "/sounds/us_schwa_pencil.mp3",
           "uk": "/sounds/gb_schwa_pencil.mp3",
           "in": "/sounds/in_schwa_pencil.mp3"
-        },
-        "image": "/images/words/pencil.png"
+        }
       }
-    ],
-    "description": "The /ə/ sound as in 'sofa'",
-    "mouthImage": "/images/mouth/ə.png"
+    ]
   },
   {
     "id": "39",
@@ -1608,8 +1418,7 @@
           "us": "/sounds/us_air_chair.mp3",
           "uk": "/sounds/gb_air_chair.mp3",
           "in": "/sounds/in_air_chair.mp3"
-        },
-        "image": "/images/words/chair.png"
+        }
       },
       {
         "word": "hair",
@@ -1619,8 +1428,7 @@
           "us": "/sounds/us_air_hair.mp3",
           "uk": "/sounds/gb_air_hair.mp3",
           "in": "/sounds/in_air_hair.mp3"
-        },
-        "image": "/images/words/hair.png"
+        }
       },
       {
         "word": "bear",
@@ -1630,12 +1438,9 @@
           "us": "/sounds/us_air_bear.mp3",
           "uk": "/sounds/gb_air_bear.mp3",
           "in": "/sounds/in_air_bear.mp3"
-        },
-        "image": "/images/words/bear.png"
+        }
       }
-    ],
-    "description": "The /eəʳ/ sound as in 'chair'",
-    "mouthImage": "/images/mouth/eəʳ.png"
+    ]
   },
   {
     "id": "40",
@@ -1650,8 +1455,7 @@
           "us": "/sounds/us_ar_car.mp3",
           "uk": "/sounds/gb_ar_car.mp3",
           "in": "/sounds/in_ar_car.mp3"
-        },
-        "image": "/images/words/car.png"
+        }
       },
       {
         "word": "park",
@@ -1661,8 +1465,7 @@
           "us": "/sounds/us_ar_park.mp3",
           "uk": "/sounds/gb_ar_park.mp3",
           "in": "/sounds/in_ar_park.mp3"
-        },
-        "image": "/images/words/park.png"
+        }
       },
       {
         "word": "arm",
@@ -1672,12 +1475,9 @@
           "us": "/sounds/us_ar_arm.mp3",
           "uk": "/sounds/gb_ar_arm.mp3",
           "in": "/sounds/in_ar_arm.mp3"
-        },
-        "image": "/images/words/arm.png"
+        }
       }
-    ],
-    "description": "The /ɑ:/ sound as in 'car'",
-    "mouthImage": "/images/mouth/ɑ:.png"
+    ]
   },
   {
     "id": "41",
@@ -1692,8 +1492,7 @@
           "us": "/sounds/us_er_bird.mp3",
           "uk": "/sounds/gb_er_bird.mp3",
           "in": "/sounds/in_er_bird.mp3"
-        },
-        "image": "/images/words/bird.png"
+        }
       },
       {
         "word": "girl",
@@ -1703,8 +1502,7 @@
           "us": "/sounds/us_er_girl.mp3",
           "uk": "/sounds/gb_er_girl.mp3",
           "in": "/sounds/in_er_girl.mp3"
-        },
-        "image": "/images/words/girl.png"
+        }
       },
       {
         "word": "fur",
@@ -1714,12 +1512,9 @@
           "us": "/sounds/us_er_fur.mp3",
           "uk": "/sounds/gb_er_fur.mp3",
           "in": "/sounds/in_er_fur.mp3"
-        },
-        "image": "/images/words/fur.png"
+        }
       }
-    ],
-    "description": "The /ɜ:ʳ/ sound as in 'bird'",
-    "mouthImage": "/images/mouth/ɜ:ʳ.png"
+    ]
   },
   {
     "id": "42",
@@ -1734,8 +1529,7 @@
           "us": "/sounds/us_or_fork.mp3",
           "uk": "/sounds/gb_or_fork.mp3",
           "in": "/sounds/in_or_fork.mp3"
-        },
-        "image": "/images/words/fork.png"
+        }
       },
       {
         "word": "corn",
@@ -1745,8 +1539,7 @@
           "us": "/sounds/us_or_corn.mp3",
           "uk": "/sounds/gb_or_corn.mp3",
           "in": "/sounds/in_or_corn.mp3"
-        },
-        "image": "/images/words/corn.png"
+        }
       },
       {
         "word": "door",
@@ -1756,12 +1549,9 @@
           "us": "/sounds/us_or_door.mp3",
           "uk": "/sounds/gb_or_door.mp3",
           "in": "/sounds/in_or_door.mp3"
-        },
-        "image": "/images/words/door.png"
+        }
       }
-    ],
-    "description": "The /ɔ:/ sound as in 'fork'",
-    "mouthImage": "/images/mouth/ɔ:.png"
+    ]
   },
   {
     "id": "43",
@@ -1776,8 +1566,7 @@
           "us": "/sounds/us_ear_ear.mp3",
           "uk": "/sounds/gb_ear_ear.mp3",
           "in": "/sounds/in_ear_ear.mp3"
-        },
-        "image": "/images/words/ear.png"
+        }
       },
       {
         "word": "deer",
@@ -1787,8 +1576,7 @@
           "us": "/sounds/us_ear_deer.mp3",
           "uk": "/sounds/gb_ear_deer.mp3",
           "in": "/sounds/in_ear_deer.mp3"
-        },
-        "image": "/images/words/deer.png"
+        }
       },
       {
         "word": "near",
@@ -1798,12 +1586,9 @@
           "us": "/sounds/us_ear_near.mp3",
           "uk": "/sounds/gb_ear_near.mp3",
           "in": "/sounds/in_ear_near.mp3"
-        },
-        "image": "/images/words/near.png"
+        }
       }
-    ],
-    "description": "The /ɪəʳ/ sound as in 'ear'",
-    "mouthImage": "/images/mouth/ɪəʳ.png"
+    ]
   },
   {
     "id": "44",
@@ -1818,8 +1603,7 @@
           "us": "/sounds/us_ure_cure.mp3",
           "uk": "/sounds/gb_ure_cure.mp3",
           "in": "/sounds/in_ure_cure.mp3"
-        },
-        "image": "/images/words/cure.png"
+        }
       },
       {
         "word": "pure",
@@ -1829,8 +1613,7 @@
           "us": "/sounds/us_ure_pure.mp3",
           "uk": "/sounds/gb_ure_pure.mp3",
           "in": "/sounds/in_ure_pure.mp3"
-        },
-        "image": "/images/words/pure.png"
+        }
       },
       {
         "word": "tour",
@@ -1840,11 +1623,8 @@
           "us": "/sounds/us_ure_tour.mp3",
           "uk": "/sounds/gb_ure_tour.mp3",
           "in": "/sounds/in_ure_tour.mp3"
-        },
-        "image": "/images/words/tour.png"
+        }
       }
-    ],
-    "description": "The /ʊəʳ/ sound as in 'cure'",
-    "mouthImage": "/images/mouth/ʊəʳ.png"
+    ]
   }
 ]

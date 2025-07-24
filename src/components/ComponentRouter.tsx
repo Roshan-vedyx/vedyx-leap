@@ -10,6 +10,7 @@ import AssessmentPlayer from './players/AssessmentPlayer';
 import EnhancedGamePlayer from './players/EnhancedGamePlayer';
 import EnhancedStoryPlayer from './players/EnhancedStoryPlayer';
 import EnhancedScenarioPlayer from './players/EnhancedScenarioPlayer';
+import PhonemePlayer from './players/PhonemePlayer';
 
 interface ComponentRouterProps {
   component: any; // Your component data from Firestore
