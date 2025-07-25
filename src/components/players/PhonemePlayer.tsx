@@ -3,12 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Volume2, ArrowLeft, ArrowRight, Home, RotateCcw, BookOpen, 
   Pause, Heart, Star, Calendar, Sparkles, Mic, Eye, Hand,
-  Coffee, Smile, CheckCircle, Play
+  Coffee, Smile, CheckCircle, Play, Check, X
 } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppState } from '../../store/useAppState';
 import { audioManager } from '../../utils/audioManager';
-
 
 interface PhonemeWord {
   word: string;
@@ -61,6 +60,12 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
   const [showBreak, setShowBreak] = useState(false);
   const [starsCollected, setStarsCollected] = useState(0);
   const [weekProgress, setWeekProgress] = useState<Record<number, boolean>>({});
+  
+  // Discrimination game state
+  const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set());
+  const [showDiscriminationFeedback, setShowDiscriminationFeedback] = useState(false);
+  const [discriminationWords, setDiscriminationWords] = useState<PhonemeWord[]>([]);
+  const [correctWords, setCorrectWords] = useState<Set<string>>(new Set());
 
   // Weekly activity structure
   const weeklyActivities: DayActivity[] = [
@@ -90,8 +95,8 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
         setPhonemes(filteredPhonemes);
         audioManager.setAccent(accent);
   
-        // ✅ Use selectedPhonemeId passed from the route
-        const index = filteredPhonemes.findIndex(p => p.id === selectedPhonemeId);
+        // Use selectedPhonemeId passed from the route
+        const index = filteredPhonemes.findIndex((p: Phoneme) => p.id === selectedPhonemeId);
         setCurrentPhonemeIndex(index >= 0 ? index : 0);
   
         setIsLoading(false);
@@ -104,24 +109,93 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
     loadPhonemes();
   }, [selectedPhonemeId, selectedPhonemes, accent]);
 
+  // Setup discrimination game when day changes to 2
+  useEffect(() => {
+    if (currentDay === 2 && currentPhoneme) {
+      setupDiscriminationGame();
+    }
+  }, [currentDay, currentPhonemeIndex]);
+
   const currentPhoneme = phonemes[currentPhonemeIndex];
   const currentActivity = weeklyActivities[currentDay - 1];
 
-  // Play phoneme sound
+  // Setup discrimination game with mix of correct and incorrect words
+  const setupDiscriminationGame = useCallback(() => {
+    if (!currentPhoneme || !phonemes) return;
+
+    // Get words from current phoneme (correct answers)
+    const currentPhonemeWords = currentPhoneme.words.slice(0, 3);
+    
+    // Get words from other phonemes (incorrect answers)
+    const otherPhonemes = phonemes.filter(p => p.id !== currentPhoneme.id);
+    const incorrectWords: PhonemeWord[] = [];
+    
+    // Randomly select words from other phonemes
+    while (incorrectWords.length < 3 && otherPhonemes.length > 0) {
+      const randomPhoneme = otherPhonemes[Math.floor(Math.random() * otherPhonemes.length)];
+      const randomWord = randomPhoneme.words[Math.floor(Math.random() * randomPhoneme.words.length)];
+      
+      // Make sure we don't duplicate words
+      if (!incorrectWords.some(w => w.word === randomWord.word) && 
+          !currentPhonemeWords.some(w => w.word === randomWord.word)) {
+        incorrectWords.push(randomWord);
+      }
+    }
+
+    // Combine and shuffle
+    const allWords = [...currentPhonemeWords, ...incorrectWords];
+    const shuffledWords = allWords.sort(() => Math.random() - 0.5);
+    
+    setDiscriminationWords(shuffledWords);
+    setCorrectWords(new Set(currentPhonemeWords.map(w => w.word)));
+    setSelectedWords(new Set());
+    setShowDiscriminationFeedback(false);
+  }, [currentPhoneme, phonemes]);
+
+  // Play phoneme sound only (not word)
   const playPhonemeSound = useCallback(async () => {
     if (!currentPhoneme || isPlaying) return;
     
     setIsPlaying(true);
     try {
       await audioManager.resumeAudioContext();
-      // Play the first word's audio as the phoneme sound
-      await audioManager.playPhonemeSound(currentPhoneme.words[0].audio);
+      // Play the pure phoneme sound
+      const phonemeAudioPath = `/sounds/phonemes/${accent}_${currentPhoneme.id}.mp3`;
+      await audioManager.playSound(phonemeAudioPath);
     } catch (error) {
       console.error('Failed to play phoneme sound:', error);
     } finally {
       setTimeout(() => setIsPlaying(false), 100);
     }
-  }, [currentPhoneme, isPlaying]);
+  }, [currentPhoneme, isPlaying, accent]);
+
+  // Play introduction sentence
+  const playIntroductionSentence = useCallback(async () => {
+    if (!currentPhoneme || isPlaying) return;
+    
+    setIsPlaying(true);
+    try {
+      await audioManager.resumeAudioContext();
+      
+      // First play the phoneme sound
+      const phonemeAudioPath = `/sounds/phonemes/${accent}_${currentPhoneme.id}.mp3`;
+      await audioManager.playSound(phonemeAudioPath);
+      
+      // Small pause
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Then play the example word
+      const exampleWord = currentPhoneme.words[0];
+      if (exampleWord) {
+        await audioManager.playPhonemeSound(exampleWord.audio);
+      }
+      
+    } catch (error) {
+      console.error('Failed to play introduction:', error);
+    } finally {
+      setTimeout(() => setIsPlaying(false), 100);
+    }
+  }, [currentPhoneme, isPlaying, accent]);
 
   // Play word audio
   const playWordAudio = useCallback(async (word: PhonemeWord) => {
@@ -137,6 +211,44 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
       setTimeout(() => setIsPlaying(false), 100);
     }
   }, [isPlaying]);
+
+  // Handle word selection in discrimination game
+  const handleWordSelection = useCallback((word: PhonemeWord) => {
+    const newSelectedWords = new Set(selectedWords);
+    
+    if (newSelectedWords.has(word.word)) {
+      newSelectedWords.delete(word.word);
+    } else {
+      newSelectedWords.add(word.word);
+    }
+    
+    setSelectedWords(newSelectedWords);
+    
+    // Play the word audio when selected
+    playWordAudio(word);
+  }, [selectedWords, playWordAudio]);
+
+  // Check discrimination answers
+  const checkDiscriminationAnswers = useCallback(() => {
+    setShowDiscriminationFeedback(true);
+    
+    // Check if all correct words are selected and no incorrect words
+    const allCorrectSelected = Array.from(correctWords).every(word => selectedWords.has(word));
+    const noIncorrectSelected = Array.from(selectedWords).every(word => correctWords.has(word));
+    
+    if (allCorrectSelected && noIncorrectSelected) {
+      // Correct! Play success sound
+      setTimeout(() => {
+        audioManager.playSound('/sounds/success.mp3').catch(console.error);
+        setStarsCollected(prev => prev + 1);
+      }, 500);
+    } else {
+      // Incorrect, play encouragement sound
+      setTimeout(() => {
+        audioManager.playSound('/sounds/try-again.mp3').catch(console.error);
+      }, 500);
+    }
+  }, [selectedWords, correctWords]);
 
   // Complete day activity
   const completeDay = useCallback(() => {
@@ -233,16 +345,28 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
               {currentPhoneme.words[0]?.emoji || '🐵'}
             </motion.div>
 
-            {/* Play button */}
+            {/* Play button for phoneme + intro */}
             <motion.button
-              onClick={playPhonemeSound}
+              onClick={playIntroductionSentence}
               disabled={isPlaying}
               className="px-8 py-4 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full shadow-lg text-xl font-medium hover:shadow-xl transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Volume2 className="w-6 h-6 inline mr-2" />
-              Hear the sound!
+              {isPlaying ? 'Playing...' : 'Hear the sound!'}
+            </motion.button>
+
+            {/* Just phoneme sound button */}
+            <motion.button
+              onClick={playPhonemeSound}
+              disabled={isPlaying}
+              className="px-6 py-3 bg-gradient-to-r from-purple-400 to-indigo-400 text-white rounded-full shadow-lg font-medium hover:shadow-xl transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Play className="w-5 h-5 inline mr-2" />
+              Just the {currentPhoneme.phoneme} sound
             </motion.button>
 
             <div className="text-lg text-gray-600">
@@ -258,26 +382,133 @@ const PhonemePlayer: React.FC<PhonemePlayerProps> = ({
               Can you hear {currentPhoneme.phoneme}?
             </h3>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-              {currentPhoneme.words.slice(0, 3).map((word, index) => (
-                <motion.button
-                  key={word.word}
-                  onClick={() => playWordAudio(word)}
-                  className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <div className="text-5xl mb-3">{word.emoji}</div>
-                  <div className="text-xl font-medium text-gray-700">{word.word}</div>
-                  <div className="text-sm text-gray-500 mt-2">Tap to hear</div>
-                </motion.button>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+              {discriminationWords.map((word, index) => {
+                const isSelected = selectedWords.has(word.word);
+                const isCorrect = correctWords.has(word.word);
+                const showFeedback = showDiscriminationFeedback;
+                
+                let buttonClass = "bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all border-4 ";
+                
+                if (showFeedback) {
+                  if (isCorrect && isSelected) {
+                    buttonClass += "border-green-400 bg-green-50"; // Correct and selected
+                  } else if (isCorrect && !isSelected) {
+                    buttonClass += "border-yellow-400 bg-yellow-50"; // Correct but not selected
+                  } else if (!isCorrect && isSelected) {
+                    buttonClass += "border-red-400 bg-red-50"; // Incorrect but selected
+                  } else {
+                    buttonClass += "border-gray-200"; // Incorrect and not selected
+                  }
+                } else {
+                  buttonClass += isSelected ? "border-blue-400 bg-blue-50" : "border-gray-200";
+                }
+
+                return (
+                  <motion.button
+                    key={word.word}
+                    onClick={() => !showFeedback && handleWordSelection(word)}
+                    className={buttonClass}
+                    whileHover={!showFeedback ? { scale: 1.05, y: -5 } : {}}
+                    whileTap={!showFeedback ? { scale: 0.95 } : {}}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                    disabled={showFeedback}
+                  >
+                    <div className="text-5xl mb-3">{word.emoji}</div>
+                    <div className="text-xl font-medium text-gray-700">{word.word}</div>
+                    <div className="text-sm text-gray-500 mt-2">
+                      {showFeedback ? (
+                        isCorrect && isSelected ? (
+                          <div className="flex items-center justify-center gap-1 text-green-600">
+                            <Check className="w-4 h-4" />
+                            Correct!
+                          </div>
+                        ) : isCorrect && !isSelected ? (
+                          <div className="text-yellow-600">You missed this one</div>
+                        ) : !isCorrect && isSelected ? (
+                          <div className="flex items-center justify-center gap-1 text-red-600">
+                            <X className="w-4 h-4" />
+                            Not this one
+                          </div>
+                        ) : (
+                          <div className="text-gray-400">Not selected</div>
+                        )
+                      ) : (
+                        isSelected ? "Selected!" : "Tap to select"
+                      )}
+                    </div>
+                    
+                    {showFeedback && isCorrect && (
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="absolute -top-2 -right-2"
+                      >
+                        <div className="bg-green-500 text-white rounded-full p-1">
+                          <Check className="w-4 h-4" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </motion.button>
+                );
+              })}
             </div>
             
-            <p className="text-gray-600">Listen carefully and tap the words that start with {currentPhoneme.phoneme}!</p>
+            <div className="space-y-4">
+              <p className="text-gray-600">
+                Listen carefully and tap the words that start with {currentPhoneme.phoneme}!
+              </p>
+              
+              {!showDiscriminationFeedback && selectedWords.size > 0 && (
+                <motion.button
+                  onClick={checkDiscriminationAnswers}
+                  className="px-6 py-3 bg-gradient-to-r from-blue-400 to-indigo-400 text-white rounded-full shadow-lg font-medium hover:shadow-xl transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Check My Answers ({selectedWords.size} selected)
+                </motion.button>
+              )}
+              
+              {showDiscriminationFeedback && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-3"
+                >
+                  <div className="text-lg font-medium text-gray-700">
+                    {Array.from(correctWords).every(word => selectedWords.has(word)) && 
+                     Array.from(selectedWords).every(word => correctWords.has(word)) ? (
+                      <div className="text-green-600 flex items-center justify-center gap-2">
+                        <CheckCircle className="w-6 h-6" />
+                        Perfect! You found all the {currentPhoneme.phoneme} words!
+                      </div>
+                    ) : (
+                      <div className="text-blue-600">
+                        Good try! The {currentPhoneme.phoneme} words were highlighted in green.
+                      </div>
+                    )}
+                  </div>
+                  
+                  <motion.button
+                    onClick={() => {
+                      setShowDiscriminationFeedback(false);
+                      setupDiscriminationGame();
+                    }}
+                    className="px-6 py-3 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full shadow-lg font-medium hover:shadow-xl transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <RotateCcw className="w-5 h-5 inline mr-2" />
+                    Try Again
+                  </motion.button>
+                </motion.div>
+              )}
+            </div>
           </motion.div>
         );
 

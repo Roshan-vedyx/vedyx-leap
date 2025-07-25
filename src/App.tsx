@@ -9,6 +9,8 @@ import UnitLoader from "./pages/UnitLoader";
 import UnitPlayer from "./pages/UnitPlayer";
 import PhonemePlayer from './components/players/PhonemePlayer';
 import PhonemeSelect from "./pages/PhonemeSelect";
+import WeeklyPhonemeScreen from './components/phonics/WeeklyPhonemeScreen';
+
 import './App.css';
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
           <Route path="/units" element={<UnitLoader />} />
           <Route path="/unit/:unitId" element={<UnitPlayer />} />
           <Route path="/phonemes" element={<PhonemeSelect />}  />
-          <Route path="/phoneme/:id" element={<PhonemePlayer />} />
+          <Route path="/phoneme/:id" element={<WeeklyPhonemeScreen />} />
         </Routes>
       </motion.div>
     </Router>
